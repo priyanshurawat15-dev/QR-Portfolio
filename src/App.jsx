@@ -1,3 +1,6 @@
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -19,6 +22,9 @@ function App() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const photos = [photo1, photo2, photo3, photo4];
+  const particlesInit = async (main) => {
+  await loadFull(main);
+};
 
   const songs = [
   {
@@ -94,8 +100,9 @@ useEffect(() => {
     <div className="bg-[#0B0F19] text-white scroll-smooth">
 
       {/* Navbar */}
-      <nav className="fixed top-0 w-full bg-black/40 backdrop-blur-md py-4 px-10 flex justify-between items-center z-50">
-        <h1 className="text-xl font-bold text-purple-500">PR</h1>
+      
+      <nav className="fixed top-0 w-full bg-white/5 backdrop-blur-lg border-b border-white/10 py-4 px-10 flex justify-between items-center z-50">
+        <h1 className="text-xl font-bold text-purple-500">P.Rawat 🌋</h1>
         <div className="space-x-6 text-gray-300">
           <a href="#home" className="hover:text-purple-400">Home</a>
           <a href="#about" className="hover:text-purple-400">About</a>
@@ -107,42 +114,147 @@ useEffect(() => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center text-center px-6">
-        <div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            I’m <span className="text-purple-500">Priyanshu Rawat</span>
-          </h1>
 
-          <h2 className="text-xl md:text-2xl text-gray-400 h-10">
-            {text}
-            <span className="animate-pulse">|</span>
-          </h2>
+<section
+  id="home"
+  className="min-h-screen flex items-center justify-center px-10 relative overflow-hidden"
+>
+  <Particles
+  id="tsparticles"
+  init={particlesInit}
+  className="absolute inset-0 -z-10"
+  options={{
+    background: {
+      color: "transparent",
+    },
+    fpsLimit: 60,
+    particles: {
+      number: {
+        value: 60,
+        density: {
+          enable: true,
+          area: 800,
+        },
+      },
+      color: {
+        value: "#a855f7",
+      },
+      links: {
+        enable: true,
+        color: "#a855f7",
+        distance: 150,
+        opacity: 0.3,
+        width: 1,
+      },
+      move: {
+        enable: true,
+        speed: 1,
+      },
+      opacity: {
+        value: 0.5,
+      },
+      size: {
+        value: 3,
+      },
+    },
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: "grab",
+        },
+      },
+      modes: {
+        grab: {
+          distance: 200,
+          links: {
+            opacity: 0.6,
+          },
+        },
+      },
+    },
+    detectRetina: true,
+  }}
+/>
 
-          <div className="mt-10">
-            <button className="px-6 py-3 border border-purple-500 text-purple-400 rounded-full hover:bg-purple-600 hover:text-white transition duration-300">
-              Download Resume
-            </button>
-          </div>
-        </div>
-      </section>
 
-      {/* About Section */}
-      <motion.section
-        id="about"
-        className="min-h-screen flex items-center justify-center px-6"
-        variants={sectionVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <div className="max-w-3xl text-center">
-          <h2 className="text-4xl font-bold mb-6 text-purple-500">About Me</h2>
-          <p className="text-gray-400 text-lg">
-            I am a BTech CSE student passionate about building real-world projects.
-            I enjoy working with React, backend systems, and solving complex problems.
-          </p>
-        </div>
-      </motion.section>
+  {/* Soft Background Glow */}
+  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-900/20 via-transparent to-black pointer-events-none" />
+
+  <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl w-full">
+
+    {/* LEFT SIDE */}
+    <div>
+      <h2 className="text-3xl text-gray-400 mb-2">Hello !!</h2>
+
+      <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+        I’m <span className="text-purple-500">Priyanshu Rawat</span>
+      </h1>
+
+      <h3 className="text-xl text-gray-400 h-8 mb-6">
+        {text}
+        <span className="animate-pulse">|</span>
+      </h3>
+
+      <button className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-full shadow-lg transition duration-300">
+        About Me ↓
+      </button>
+
+      {/* Social Icons */}
+      <div className="flex gap-4 mt-8">
+        <a
+          href="https://linkedin.com/in/priyanshurawat15/"
+          target="_blank"
+          className="w-10 h-10 flex items-center justify-center bg-[#111827] rounded-full hover:bg-purple-600 transition"
+        >
+          in
+        </a>
+
+        <a
+          href="https://github.com/priyanshurawat15-dev"
+          target="_blank"
+          className="w-10 h-10 flex items-center justify-center bg-[#111827] rounded-full hover:bg-purple-600 transition"
+        >
+          GH
+        </a>
+
+        <a
+          href="https://instagram.com/priyanshurawat_15"
+          target="_blank"
+          className="w-10 h-10 flex items-center justify-center bg-[#111827] rounded-full hover:bg-purple-600 transition"
+        >
+          IG
+        </a>
+      </div>
+    </div>
+    
+
+    {/* RIGHT SIDE IMAGE */}
+<motion.div
+  className="flex justify-center items-center"
+  animate={{ y: [0, -20, 0] }}
+  transition={{ duration: 4, repeat: Infinity }}
+>
+  <div className="relative flex items-center justify-center">
+
+    {/* Strong Center Glow */}
+    <div className="absolute w-[450px] h-[450px] bg-purple-600 blur-[180px] opacity-40 rounded-full"></div>
+
+    {/* Image */}
+    <img
+      src={photo1}
+      alt="profile"
+      className="relative w-72 h-72 object-cover rounded-full border-4 border-purple-500 shadow-2xl"
+    />
+
+  </div>
+</motion.div>
+
+  </div>
+</section>
+
+
+
 
       {/* Projects Section */}
       <motion.section
@@ -185,9 +297,9 @@ useEffect(() => {
 
     <p className="text-gray-300 leading-relaxed text-lg">
       I'm a BTech CSE student passionate about building modern web
-      applications and experimenting with UI animations.
-      I love creating clean digital experiences and exploring
-      new technologies.
+      applications,building real-world projects & experimenting with UI animations.
+      I love creating clean digital experiences and exploring new technologies.
+
     </p>
 
     <p className="text-gray-400 mt-6">
@@ -329,20 +441,122 @@ useEffect(() => {
       {/* Contact Section */}
       <motion.section
         id="contact"
-        className="min-h-screen flex items-center justify-center px-6"
-        variants={sectionVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="min-h-screen flex flex-col items-center justify-center px-6 bg-[#0f172a]"
       >
-        <div className="text-center">
-          <h2 className="text-4xl font-bold mb-6 text-purple-500">Contact Me</h2>
-          <p className="text-gray-400">Email: yourmail@example.com</p>
+        <h2 className="text-4xl font-bold text-purple-500 mb-6">
+          Get In Touch
+        </h2>
+      
+        <p className="text-gray-400 text-center max-w-xl mb-8">
+          I'm always open to collaborations, internships, and interesting tech conversations.
+          Feel free to reach out 🚀
+        </p>
+      
+        <div className="flex flex-col gap-4 text-center">
+          
+          <a
+            href="mailto:priyanshurwt28@gmail.com"
+            className="bg-[#111827] px-6 py-3 rounded-xl border border-purple-500/30 hover:bg-purple-600 transition duration-300"
+          >
+            📧 Email Me
+          </a>
+      
+          <a
+            href="https://github.com/priyanshurawat15-dev"
+            target="_blank"
+            className="bg-[#111827] px-6 py-3 rounded-xl border border-purple-500/30 hover:bg-purple-600 transition duration-300"
+          >
+            💻 GitHub
+          </a>
+
+          
+          <a
+            href="https://instagram.com/priyanshurawat_15"
+            target="_blank"
+            className="bg-[#111827] px-6 py-3 rounded-xl border border-purple-500/30 hover:bg-purple-600 transition duration-300"
+          >
+            📱 Instagram
+          </a>
+      
+          <a
+            href="https://linkedin.com/in/priyanshurawat15/"
+            target="_blank"
+            className="bg-[#111827] px-6 py-3 rounded-xl border border-purple-500/30 hover:bg-purple-600 transition duration-300"
+          >
+            🔗 LinkedIn
+          </a>
+      
         </div>
       </motion.section>
 
+
+      {/* Footer */}
+<footer className="bg-[#020617] text-gray-300 px-10 py-14">
+  <div className="grid md:grid-cols-3 gap-10">
+
+    <div>
+      <p className="text-lg leading-relaxed">
+        Thank you for visiting my personal portfolio website.
+        Connect with me over socials.
+      </p>
     </div>
+
+    <div>
+      <h3 className="text-2xl font-semibold text-white mb-4">
+        Quick Links
+      </h3>
+      <ul className="space-y-2">
+        <li><a href="#home" className="hover:text-purple-400">Home</a></li>
+        <li><a href="#about" className="hover:text-purple-400">About</a></li>
+        <li><a href="#projects" className="hover:text-purple-400">Projects</a></li>
+        <li><a href="#gallery" className="hover:text-purple-400">Gallery</a></li>
+        <li><a href="#songs" className="hover:text-purple-400">Songs</a></li>
+        <li><a href="#contact" className="hover:text-purple-400">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 className="text-2xl font-semibold text-white mb-4">
+        Contact Info
+      </h3>
+      <ul className="space-y-3">
+        <li>☎️ +91 9634511431</li>
+        <li>📧 priyanshurwt28@gmail.com</li>
+        <li>🗺️ Uttarakhand, India</li>
+      </ul>
+
+      <div className="flex gap-4 mt-6">
+        <a href="https://instagram.com/priyanshurawat_15" target="_blank" className="bg-white text-black px-3 py-2 rounded-full hover:bg-purple-500 hover:text-white transition">
+          IG
+          </a>
+
+
+        <a href="https://linkedin.com/in/priyanshurawat15/" target="_blank" className="bg-white text-black px-3 py-2 rounded-full hover:bg-purple-500 hover:text-white transition">
+          in
+        </a>
+        <a href="https://github.com/priyanshurawat15-dev" target="_blank" className="bg-white text-black px-3 py-2 rounded-full hover:bg-purple-500 hover:text-white transition">
+          GH
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div className="border-t border-gray-700 mt-12 pt-6 text-center text-sm">
+    © {new Date().getFullYear()} All Rights Reserved | Designed By Priyanshu Rawat
+  </div>
+</footer>
+
+
+
+
+    </div>
+    
   );
 }
+
 
 export default App;
