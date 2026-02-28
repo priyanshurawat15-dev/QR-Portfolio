@@ -1,8 +1,6 @@
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import ParticlesBackground from "./components/ParticlesBackground.jsx";
 
 import photo1 from "./assets/photos/photo1.jpg";
 import photo2 from "./assets/photos/photo2.jpg";
@@ -17,62 +15,30 @@ import song5 from "./assets/songs/song5.png";
 import song6 from "./assets/songs/song6.png";
 
 function App() {
+
   const roles = ["Full Stack Developer", "Problem Solver", "Building Cool Things"];
   const [text, setText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const photos = [photo1, photo2, photo3, photo4];
-  const particlesInit = async (main) => {
-  await loadFull(main);
-};
 
   const songs = [
-  {
-    title: "Finding Her",
-    artist: "Kushagra ",
-    image: song1,
-    link: "https://open.spotify.com/track/5ThyDv6aRVU8AH4vXQNldF?si=e60699c27c1c4b4e"
-  },
-  {
-    title: "Arz Kiya Hai",
-    artist: "Anuv Jain",
-    image: song2,
-    link: "https://open.spotify.com/track/1bMkimTb47umgNP6xCi4A1?si=f1c73d104f474954"
-  },
-  {
-    title: "For A Reason",
-    artist: "Karan Ahuja",
-    image: song3,
-    link: "https://open.spotify.com/track/0cYohCh24y1aMjJmcS9RBl?si=1bfb2864ee4d4c8c"
-  },
-  {
-    title: "Dooron Dooron",
-    artist: "Paresh Pahuja",
-    image: song4,
-    link: "https://open.spotify.com/track/0q5e5KtUOhYQujmhLP0pKd?si=2d5e4be01a2d405b"
-  },
-  {
-    title: "Faqeeran",
-    artist: "Rashmeet Kaur",
-    image: song5,
-    link: "https://open.spotify.com/track/7DlNgLpxX3gPh3tzqrY7tL?si=d62701de326b4162"
-  },
-  {
-    title: "Sahiba",
-    artist: "Aditya Rakhira",
-    image: song6,
-    link: "https://open.spotify.com/track/0eLtIxPRNJfsmehITZ1qaJ?si=7c4013dd33534c1e"
-  },
-];
-const [active, setActive] = useState(0);
-useEffect(() => {
-  const interval = setInterval(() => {
-    setActive((prev) => (prev + 1) % songs.length);
-  }, 3000);
+    { title: "Finding Her", artist: "Kushagra", image: song1, link: "https://open.spotify.com/track/5ThyDv6aRVU8AH4vXQNldF" },
+    { title: "Arz Kiya Hai", artist: "Anuv Jain", image: song2, link: "https://open.spotify.com/track/1bMkimTb47umgNP6xCi4A1" },
+    { title: "For A Reason", artist: "Karan Ahuja", image: song3, link: "https://open.spotify.com/track/0cYohCh24y1aMjJmcS9RBl" },
+    { title: "Dooron Dooron", artist: "Paresh Pahuja", image: song4, link: "https://open.spotify.com/track/0q5e5KtUOhYQujmhLP0pKd" },
+    { title: "Faqeeran", artist: "Rashmeet Kaur", image: song5, link: "https://open.spotify.com/track/7DlNgLpxX3gPh3tzqrY7tL" },
+    { title: "Sahiba", artist: "Aditya Rakhira", image: song6, link: "https://open.spotify.com/track/0eLtIxPRNJfsmehITZ1qaJ" },
+  ];
 
-  return () => clearInterval(interval);
-}, [songs.length]);
+  const [active, setActive] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % songs.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [songs.length]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -100,7 +66,6 @@ useEffect(() => {
     <div className="bg-[#0B0F19] text-white scroll-smooth">
 
       {/* Navbar */}
-      
       <nav className="fixed top-0 w-full bg-white/5 backdrop-blur-lg border-b border-white/10 py-4 px-10 flex justify-between items-center z-50">
         <h1 className="text-xl font-bold text-purple-500">P.Rawat 🌋</h1>
         <div className="space-x-6 text-gray-300">
@@ -114,145 +79,48 @@ useEffect(() => {
       </nav>
 
       {/* Hero Section */}
+      <section
+        id="home"
+        className="min-h-screen flex items-center justify-center px-10 relative overflow-hidden"
+      >
+        <ParticlesBackground />
 
-<section
-  id="home"
-  className="min-h-screen flex items-center justify-center px-10 relative overflow-hidden"
->
-  <Particles
-  id="tsparticles"
-  init={particlesInit}
-  className="absolute inset-0 -z-10"
-  options={{
-    background: {
-      color: "transparent",
-    },
-    fpsLimit: 60,
-    particles: {
-      number: {
-        value: 60,
-        density: {
-          enable: true,
-          area: 800,
-        },
-      },
-      color: {
-        value: "#a855f7",
-      },
-      links: {
-        enable: true,
-        color: "#a855f7",
-        distance: 150,
-        opacity: 0.3,
-        width: 1,
-      },
-      move: {
-        enable: true,
-        speed: 1,
-      },
-      opacity: {
-        value: 0.5,
-      },
-      size: {
-        value: 3,
-      },
-    },
-    interactivity: {
-      events: {
-        onHover: {
-          enable: true,
-          mode: "grab",
-        },
-      },
-      modes: {
-        grab: {
-          distance: 200,
-          links: {
-            opacity: 0.6,
-          },
-        },
-      },
-    },
-    detectRetina: true,
-  }}
-/>
+        <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center max-w-7xl w-full">
 
+          <div>
+            <h2 className="text-3xl text-gray-400 mb-2">Hello !!</h2>
 
-  {/* Soft Background Glow */}
-  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-900/20 via-transparent to-black pointer-events-none" />
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+              I’m <span className="text-purple-500">Priyanshu Rawat</span>
+            </h1>
 
-  <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl w-full">
+            <h3 className="text-xl text-gray-400 h-8 mb-6">
+              {text}
+              <span className="animate-pulse">|</span>
+            </h3>
 
-    {/* LEFT SIDE */}
-    <div>
-      <h2 className="text-3xl text-gray-400 mb-2">Hello !!</h2>
+            <button className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-full shadow-lg transition duration-300">
+              About Me ↓
+            </button>
+          </div>
 
-      <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
-        I’m <span className="text-purple-500">Priyanshu Rawat</span>
-      </h1>
+          <motion.div
+            className="flex justify-center items-center"
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          >
+            <div className="relative">
+              <div className="absolute w-[450px] h-[450px] bg-purple-600 blur-[180px] opacity-40 rounded-full"></div>
+              <img
+                src={photo1}
+                alt="profile"
+                className="relative w-72 h-72 object-cover rounded-full border-4 border-purple-500 shadow-2xl"
+              />
+            </div>
+          </motion.div>
 
-      <h3 className="text-xl text-gray-400 h-8 mb-6">
-        {text}
-        <span className="animate-pulse">|</span>
-      </h3>
-
-      <button className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-full shadow-lg transition duration-300">
-        About Me ↓
-      </button>
-
-      {/* Social Icons */}
-      <div className="flex gap-4 mt-8">
-        <a
-          href="https://linkedin.com/in/priyanshurawat15/"
-          target="_blank"
-          className="w-10 h-10 flex items-center justify-center bg-[#111827] rounded-full hover:bg-purple-600 transition"
-        >
-          in
-        </a>
-
-        <a
-          href="https://github.com/priyanshurawat15-dev"
-          target="_blank"
-          className="w-10 h-10 flex items-center justify-center bg-[#111827] rounded-full hover:bg-purple-600 transition"
-        >
-          GH
-        </a>
-
-        <a
-          href="https://instagram.com/priyanshurawat_15"
-          target="_blank"
-          className="w-10 h-10 flex items-center justify-center bg-[#111827] rounded-full hover:bg-purple-600 transition"
-        >
-          IG
-        </a>
-      </div>
-    </div>
-    
-
-    {/* RIGHT SIDE IMAGE */}
-<motion.div
-  className="flex justify-center items-center"
-  animate={{ y: [0, -20, 0] }}
-  transition={{ duration: 4, repeat: Infinity }}
->
-  <div className="relative flex items-center justify-center">
-
-    {/* Strong Center Glow */}
-    <div className="absolute w-[450px] h-[450px] bg-purple-600 blur-[180px] opacity-40 rounded-full"></div>
-
-    {/* Image */}
-    <img
-      src={photo1}
-      alt="profile"
-      className="relative w-72 h-72 object-cover rounded-full border-4 border-purple-500 shadow-2xl"
-    />
-
-  </div>
-</motion.div>
-
-  </div>
-</section>
-
+        </div>
+      </section>
 
 
 
@@ -551,12 +419,8 @@ useEffect(() => {
 </footer>
 
 
-
-
     </div>
-    
   );
 }
-
 
 export default App;
