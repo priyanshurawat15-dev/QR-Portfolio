@@ -14,6 +14,21 @@ import song4 from "./assets/songs/song4.png";
 import song5 from "./assets/songs/song5.png";
 import song6 from "./assets/songs/song6.png";
 
+import { 
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare, 
+  FaReact, 
+  FaGitAlt,
+  FaJava
+} from "react-icons/fa";
+
+import { 
+  SiC,
+  SiCplusplus,
+  SiPython 
+} from "react-icons/si";
+
 function App() {
 
   const roles = ["Full Stack Developer", "Problem Solver", "Building Cool Things"];
@@ -122,7 +137,134 @@ function App() {
         </div>
       </section>
 
+      {/* About Section */}
+<motion.section
+  id="about"
+  className="min-h-screen flex items-center justify-center px-6"
+  variants={sectionVariant}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+>
 
+<div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12">
+
+  {/* Left Side - Photo */}
+  <div className="flex-shrink-0">
+    <img
+      src={photo1}   // tum already photo1 import kar rahe ho upar
+      alt="Priyanshu Rawat"
+      className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl border-4 border-purple-500 shadow-xl"
+    />
+  </div>
+
+  {/* Right Side - Text */}
+  <div className="text-center md:text-left">
+
+    <h2 className="text-6xl font-bold mb-16 text-purple-500">
+      👤About Me
+    </h2>
+
+    <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">
+      Priyanshu Rawat🧑‍🎓
+    </h3>
+    
+   <p className="text-gray-300 text-lg leading-relaxed mb-2">
+      Hello Sir 😊 !
+    </p>
+    
+    <p className="text-gray-300 text-lg leading-relaxed mb-4">
+      I'm Priyanshu Rawat, a Computer Science & Engineering student who loves turning ideas
+      into real, working applications. I enjoy building practical projects that solve real-world
+      problems while combining creativity with functionality.
+    </p>
+
+    <p className="text-gray-300 text-lg leading-relaxed mb-4">
+      I may not be at a big position yet & still in the learning phase of my journey, but I am learning,
+      improving, and pushing myself to grow every day.
+      Every project I build helps me improve my skills and understand technology more deeply.
+    </p>
+
+    <p  className="text-gray-400 mt-4 leading-relaxed mb-4">
+     Whether I’m working on a web project or contributing to something meaningful, 
+     I always focus on learning and improving my skills. 
+     My goal is to continue growing as a developer and make a positive impact through technology.
+     </p>
+
+     <p className="text-gray-400 mt-4 leading-relaxed mb-4">
+       Currently exploring React, UI/UX design, and creative
+      front-end interactions.
+      </p>
+
+    <div className="mt-6 text-gray-400 space-y-2">
+      <p>
+     📧 <span className="text-blue-400 font-medium">Email :</span> priyanshurawat087@gmail.com
+      </p>
+
+      <p>
+      📍 <span className="text-blue-400 font-medium">From :</span> Uttarakhand, India
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+
+</motion.section>
+
+
+
+
+      {/* Skills Section */}
+{/* Skills Section */}
+<motion.section
+  id="skills"
+  className="min-h-screen flex flex-col items-center justify-center px-6"
+  variants={sectionVariant}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+>
+  <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+    ⏻ Skills & Technologies
+  </h2>
+
+  <p className="text-gray-400 mb-12 text-center max-w-xl">
+    Technologies and programming languages I use to build efficient and modern applications.
+  </p>
+
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+    {[
+      { name: "HTML", icon: <FaHtml5 />, color: "text-orange-500" },
+      { name: "CSS", icon: <FaCss3Alt />, color: "text-blue-400" },
+      { name: "C", icon: <SiC />, color: "text-blue-400" },
+      { name: "C++", icon: <SiCplusplus />, color: "text-blue-500" },
+      { name: "Java", icon: <FaJava />, color: "text-red-500" },
+      { name: "Python", icon: <SiPython />, color: "text-yellow-400" },
+      { name: "JavaScript", icon: <FaJsSquare />, color: "text-yellow-500" },
+      { name: "React", icon: <FaReact />, color: "text-cyan-400" },
+      { name: "Git", icon: <FaGitAlt />, color: "text-orange-500" },
+    ].map((skill, index) => (
+      <motion.div
+        key={index}
+        whileHover={{ y: -8 }}
+        className="bg-white/5 backdrop-blur-lg px-8 py-6 rounded-2xl 
+        border border-purple-500/20 text-center 
+        transition-all duration-300 cursor-pointer 
+        hover:shadow-[0_0_25px_rgba(168,85,247,0.4)]"
+      >
+        <div className={`text-4xl mb-4 ${skill.color}`}>
+          {skill.icon}
+        </div>
+
+        <h3 className="text-lg font-semibold text-white">
+          {skill.name}
+        </h3>
+      </motion.div>
+    ))}
+  </div>
+</motion.section>
 
       {/* Projects Section */}
       <motion.section
@@ -148,61 +290,6 @@ function App() {
           </div>
         </div>
       </motion.section>
-
-      {/* About Section */}
-<motion.section
-  id="about"
-  className="min-h-screen flex items-center justify-center px-6"
-  variants={sectionVariant}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
->
-  <div className="max-w-4xl text-center">
-    <h2 className="text-4xl font-bold mb-6 text-purple-500">
-      About Me
-    </h2>
-
-    <p className="text-gray-300 leading-relaxed text-lg">
-      I'm a BTech CSE student passionate about building modern web
-      applications,building real-world projects & experimenting with UI animations.
-      I love creating clean digital experiences and exploring new technologies.
-
-    </p>
-
-    <p className="text-gray-400 mt-6">
-      Currently exploring React, UI/UX design, and creative
-      front-end interactions.
-    </p>
-  </div>
-</motion.section>
-
-{/* Skills Section */}
-<motion.section
-  id="skills"
-  className="min-h-screen flex flex-col items-center justify-center px-6"
-  variants={sectionVariant}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
->
-  <h2 className="text-4xl font-bold mb-10 text-purple-500">
-    Skills
-  </h2>
-
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-    {["HTML", "CSS", "JavaScript", "React", "Tailwind", "Node.js", "Git", "UI/UX"].map(
-      (skill, index) => (
-        <div
-          key={index}
-          className="bg-[#111827] px-6 py-4 rounded-xl border border-purple-500/30 hover:scale-110 transition duration-300"
-        >
-          {skill}
-        </div>
-      )
-    )}
-  </div>
-</motion.section>
       
       {/* Gallery Section */}
       <motion.section
