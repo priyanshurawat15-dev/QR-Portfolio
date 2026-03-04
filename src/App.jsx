@@ -1,3 +1,4 @@
+import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ParticlesBackground from "./components/ParticlesBackground.jsx";
@@ -6,6 +7,8 @@ import photo1 from "./assets/photos/photo1.jpg";
 import photo2 from "./assets/photos/photo2.jpg";
 import photo3 from "./assets/photos/photo3.jpg";
 import photo4 from "./assets/photos/photo4.jpg";
+import photo5 from "./assets/photos/photo5.jpg";
+import photo6 from "./assets/photos/photo6.jpg";
 
 import song1 from "./assets/songs/song1.png";
 import song2 from "./assets/songs/song2.png";
@@ -35,7 +38,7 @@ function App() {
   const [text, setText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const photos = [photo1, photo2, photo3, photo4];
+  const photos = [photo1, photo2, photo3, photo4, photo5, photo6];
 
   const songs = [
     { title: "Finding Her", artist: "Kushagra", image: song1, link: "https://open.spotify.com/track/5ThyDv6aRVU8AH4vXQNldF" },
@@ -78,20 +81,11 @@ function App() {
   };
 
   return (
-    <div className="bg-[#0B0F19] text-white scroll-smooth">
+    <div className="bg-[#111827] text-white scroll-smooth">
 
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full bg-white/5 backdrop-blur-lg border-b border-white/10 py-4 px-10 flex justify-between items-center z-50">
-        <h1 className="text-xl font-bold text-purple-500">P.Rawat 🌋</h1>
-        <div className="space-x-6 text-gray-300">
-          <a href="#home" className="hover:text-purple-400">Home</a>
-          <a href="#about" className="hover:text-purple-400">About</a>
-          <a href="#projects" className="hover:text-purple-400">Projects</a>
-          <a href="#contact" className="hover:text-purple-400">Contact</a>
-          <a href="#gallery" className="hover:text-purple-400">Gallery</a>
-          <a href="#songs" className="hover:text-purple-400">Songs</a>
-        </div>
-      </nav>
+
+  <Navbar />
+
 
       {/* Hero Section */}
       <section
@@ -125,7 +119,7 @@ function App() {
             transition={{ duration: 4, repeat: Infinity }}
           >
             <div className="relative">
-              <div className="absolute w-[450px] h-[450px] bg-purple-600 blur-[180px] opacity-40 rounded-full"></div>
+              <div className="absolute w-112.5 h-112.5 bg-purple-600 blur-[180px] opacity-40 rounded-full"></div>
               <img
                 src={photo1}
                 alt="profile"
@@ -150,11 +144,11 @@ function App() {
 <div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12">
 
   {/* Left Side - Photo */}
-  <div className="flex-shrink-0">
+  <div className="shrink-0">
     <img
-      src={photo1}   // tum already photo1 import kar rahe ho upar
+      src={photo6}   // tum already photo1 import kar rahe ho upar
       alt="Priyanshu Rawat"
-      className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl border-4 border-purple-500 shadow-xl"
+      className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl border-4 border-purple-400 shadow-xl"
     />
   </div>
 
@@ -226,7 +220,7 @@ function App() {
   whileInView="visible"
   viewport={{ once: true }}
 >
-  <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+  <h2 className="text-4xl font-bold mb-4 bg-linear-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
     ⏻ Skills & Technologies
   </h2>
 
