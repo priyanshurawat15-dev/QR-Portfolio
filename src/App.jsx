@@ -646,12 +646,12 @@ Send Message
         Quick Links
       </h3>
       <ul className="space-y-2">
-        <li><a href="#home" className="hover:text-purple-400">Home</a></li>
-        <li><a href="#about" className="hover:text-purple-400">About</a></li>
-        <li><a href="#projects" className="hover:text-purple-400">Projects</a></li>
-        <li><a href="#gallery" className="hover:text-purple-400">Gallery</a></li>
-        <li><a href="#songs" className="hover:text-purple-400">Songs</a></li>
-        <li><a href="#contact" className="hover:text-purple-400">Contact</a></li>
+        <li><a href="#home" className="hover:text-purple-400">➤ Home</a></li>
+        <li><a href="#about" className="hover:text-purple-400">➤ About</a></li>
+        <li><a href="#projects" className="hover:text-purple-400">➤ Projects</a></li>
+        <li><a href="#gallery" className="hover:text-purple-400">➤ Gallery</a></li>
+        <li><a href="#songs" className="hover:text-purple-400">➤ Songs</a></li>
+        <li><a href="#contact" className="hover:text-purple-400">➤ Contact</a></li>
       </ul>
     </div>
 
@@ -662,7 +662,7 @@ Send Message
       <ul className="space-y-3">
         <li>☎️ +91 9634511431</li>
         <li>📧 priyanshurwt28@gmail.com</li>
-        <li>🌐 priyanshu-rawat.vercel.app</li>
+        {/* <li>🌐 priyanshu-rawat.vercel.app</li> */}
         <li>🗺️ Uttarakhand, India</li>
 
       </ul>
