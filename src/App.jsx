@@ -17,9 +17,9 @@ import song4 from "./assets/songs/song4.png";
 import song5 from "./assets/songs/song5.png";
 import song6 from "./assets/songs/song6.png";
 
-import portfolioImg from "./assets/projects/portfolio.png";
-import vehicleImg from "./assets/projects/vehicleqr.png";
-import slotImg from "./assets/projects/slotfinder.png";
+import portfolioImg from "./assets/Projects/portfolio.png";
+import vehicleImg from "./assets/Projects/vehicleqr.png";
+import slotImg from "./assets/Projects/slotfinder.png";
 
 import emailjs from "emailjs-com";
 
