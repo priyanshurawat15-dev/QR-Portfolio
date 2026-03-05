@@ -17,9 +17,9 @@ import song4 from "./assets/songs/song4.png";
 import song5 from "./assets/songs/song5.png";
 import song6 from "./assets/songs/song6.png";
 
-import portfolioImg from "./assets/projects/portfolio.png";
-import vehicleImg from "./assets/projects/vehicleqr.png";
-import slotImg from "./assets/projects/slotfinder.png";
+import portfolio from "./assets/projects/portfolio.png";
+import vehicleqr from "./assets/projects/vehicleqr.png";
+import slotfinder from "./assets/projects/slotfinder.png";
 
 import emailjs from "emailjs-com";
 
@@ -343,7 +343,7 @@ function App() {
             <div className="p-6 rounded-xl bg-[#0f172a] border border-purple-500/40 hover:border-purple-500 hover:scale-105 hover:shadow-xl transition duration-300">
             
             <img
-              src={portfolioImg}
+              src={portfolio}
               className="rounded-lg mb-4 w-full h-40 object-cover transition duration-300 hover:scale-105"
             />
 
@@ -375,7 +375,7 @@ function App() {
             <div className="p-6 rounded-xl bg-[#0f172a] border border-purple-500/40 hover:border-purple-500 hover:scale-105 hover:shadow-xl transition duration-300">
             
             <img
-              src={vehicleImg}
+              src={vehicleqr}
               className="rounded-lg mb-4 w-full h-40 object-cover transition duration-300 hover:scale-105"
             />
 
@@ -408,7 +408,7 @@ function App() {
             <div className="p-6 rounded-xl bg-[#0f172a] border border-purple-500/40 hover:border-purple-500 hover:scale-105 hover:shadow-xl transition duration-300">
            
             <img
-              src={slotImg}
+              src={slotfinder}
               className="rounded-lg mb-4 w-full h-40 object-cover transition duration-300 hover:scale-105"
             
             />
