@@ -17,6 +17,20 @@ import song4 from "./assets/songs/song4.png";
 import song5 from "./assets/songs/song5.png";
 import song6 from "./assets/songs/song6.png";
 
+import portfolioImg from "./assets/projects/portfolio.png";
+import vehicleImg from "./assets/projects/vehicleqr.png";
+import slotImg from "./assets/projects/slotfinder.png";
+
+import emailjs from "emailjs-com";
+
+import { 
+  FaLinkedin,
+  FaGithub,
+  FaTwitter,
+  FaInstagram,
+  FaDiscord
+} from "react-icons/fa";
+
 import { 
   FaHtml5,
   FaCss3Alt,
@@ -33,6 +47,29 @@ import {
 } from "react-icons/si";
 
 function App() {
+
+
+  const handleSubmit = (e) => {
+  e.preventDefault();
+
+  emailjs.sendForm(
+    "service_9rbl0as",
+    "template_903rym9",
+    e.target,
+    "YEv44TDZJ3ekcZ1la"
+  ).then(
+    (result) => {
+      alert(" ✅ Message sent successfully!");
+    },
+    (error) => {
+      alert("Shitt !! ❌  Failed to send message.");
+    }
+  );
+
+  e.target.reset();
+};
+
+
 
   const roles = ["Full Stack Developer", "Problem Solver", "Building Cool Things"];
   const [text, setText] = useState("");
@@ -108,11 +145,41 @@ function App() {
               <span className="animate-pulse">|</span>
             </h3>
 
-            <button className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-full shadow-lg transition duration-300">
+            <a href="#about"
+            className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-full shadow-lg transition duration-300 inline-block">
               About Me ↓
-            </button>
-          </div>
+            </a>
 
+
+          <div className="flex gap-6 mt-8">
+  
+  <a href="https://linkedin.com" target="_blank"
+ className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
+    <FaLinkedin className="text-3xl" />
+  </a>
+
+  <a href="https://github.com" target="_blank"
+ className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
+    <FaGithub className="text-3xl" />
+  </a>
+
+  <a href="https://twitter.com" target="_blank"
+ className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
+    <FaTwitter className="text-3xl" />
+  </a>
+
+  <a href="https://instagram.com" target="_blank"
+  className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
+    <FaInstagram className="text-3xl" />
+  </a>
+
+    <a href="https://discord.com" target="_blank"
+    className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
+    <FaDiscord className="text-3xl"/>
+  </a>
+
+</div>
+</div>
           <motion.div
             className="flex justify-center items-center"
             animate={{ y: [0, -20, 0] }}
@@ -269,18 +336,107 @@ function App() {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="max-w-4xl text-center">
-          <h2 className="text-4xl font-bold mb-10 text-purple-500">Projects</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 border border-purple-500 rounded-xl hover:scale-105 transition">
-              <h3 className="text-2xl font-semibold mb-3">Smart Vehicle QR</h3>
-              <p className="text-gray-400">QR-based vehicle emergency assistance system.</p>
+          <div className="max-w-4xl text-center">
+            <h2 className="text-4xl font-bold mb-10 text-purple-500">Projects</h2>
+            <div className="grid md:grid-cols-3 gap-12 mt-10">
+
+            <div className="p-6 rounded-xl bg-[#0f172a] border border-purple-500/40 hover:border-purple-500 hover:scale-105 hover:shadow-xl transition duration-300">
+            
+            <img
+              src={portfolioImg}
+              className="rounded-lg mb-4 w-full h-40 object-cover transition duration-300 hover:scale-105"
+            />
+
+            
+            <h3 className="text-2xl font-bold mb-3">
+              Personal Portfolio Website</h3>
+           <p className="text-gray-400 text-sm leading-relaxed mb-5">
+            Responsive personal portfolio website that showcase my all details.
+            </p>
+            <div className="flex gap-3">
+           <a
+            href="https://github.com/yourproject"
+            target="_blank"
+            className="px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700"
+            >
+            GitHub
+            </a>
+
+            <a
+            href="#"
+            className="px-4 py-2 border border-purple-500 rounded-lg hover:bg-purple-500"
+            >
+            Live Demo
+            </a>
+
+            </div>
             </div>
 
-            <div className="p-6 border border-purple-500 rounded-xl hover:scale-105 transition">
-              <h3 className="text-2xl font-semibold mb-3">Slot Finder</h3>
-              <p className="text-gray-400">Find free classroom slots and teacher availability.</p>
+            <div className="p-6 rounded-xl bg-[#0f172a] border border-purple-500/40 hover:border-purple-500 hover:scale-105 hover:shadow-xl transition duration-300">
+            
+            <img
+              src={vehicleImg}
+              className="rounded-lg mb-4 w-full h-40 object-cover transition duration-300 hover:scale-105"
+            />
+
+            
+            <h3 className="text-2xl font-bold mb-3">
+              Smart Vehicle QR System
+            </h3>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+            A smart QR-based vehicle system that provides emergency assistance and vehicle information instantly by scanning a QR code.
+            </p>
+            <div className="flex gap-3">
+
+            <a
+            href="https://github.com/yourproject"
+            target="_blank"
+            className="px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700"
+            >
+            GitHub
+            </a>
+
+            <a
+            href="#"
+            className="px-4 py-2 border border-purple-500 rounded-lg hover:bg-purple-500"
+            >
+            Live Demo
+            </a>
             </div>
+            </div>
+
+            <div className="p-6 rounded-xl bg-[#0f172a] border border-purple-500/40 hover:border-purple-500 hover:scale-105 hover:shadow-xl transition duration-300">
+           
+            <img
+              src={slotImg}
+              className="rounded-lg mb-4 w-full h-40 object-cover transition duration-300 hover:scale-105"
+            
+            />
+           
+            <h3 className="text-2xl font-bold mb-3">
+              Free Slot Finder Portal </h3>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+            A portal that helps students find available classrooms and check teacher availability in real time.
+            </p>
+            <div className="flex gap-3">
+           
+            <a
+            href="https://github.com/yourproject"
+            target="_blank"
+            className="px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700"
+            >
+            GitHub
+            </a>
+            <a
+            href="#"
+            className="px-4 py-2 border border-purple-500 rounded-lg hover:bg-purple-500"
+            >
+            Live Demo
+            </a>
+            
+            </div>
+
+          </div>
           </div>
         </div>
       </motion.section>
@@ -400,15 +556,46 @@ function App() {
         </h2>
       
         <p className="text-gray-400 text-center max-w-xl mb-8">
-          I'm always open to collaborations, internships, and interesting tech conversations.
-          Feel free to reach out 🚀
+          I'm always open to collaborations, internships, and exciting tech opportunities. Feel free to reach out !! 🚀
         </p>
-      
-        <div className="flex flex-col gap-4 text-center">
+
+        <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md">
+
+<input
+name="name"
+type="text"
+placeholder="Your Name"
+className="w-full px-4 py-3 bg-[#0f172a] border border-purple-500/40 rounded-lg focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
+/>
+
+<input
+name="email"
+type="email"
+placeholder="Your Email"
+className="w-full px-4 py-3 bg-[#0f172a] border border-purple-500/40 rounded-lg focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
+/>
+
+<textarea
+name="message"
+placeholder="Your Message"
+rows="4"
+className="w-full px-4 py-3 bg-[#0f172a] border border-purple-500/40 rounded-lg focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
+/>
+
+<button
+type="submit"
+className="w-full py-3 bg-linear-to-r from-purple-600 to-purple-800 rounded-lg hover:opacity-90 transition"
+>
+Send Message
+</button>
+
+</form>
+    
+          <div className="grid grid-cols-2 gap-4 mt-8 justify-center">
           
           <a
             href="mailto:priyanshurwt28@gmail.com"
-            className="bg-[#111827] px-6 py-3 rounded-xl border border-purple-500/30 hover:bg-purple-600 transition duration-300"
+            className="bg-[#111827] px-6 py-3 border border-purple-500 rounded-lg hover:bg-purple-600 hover:text-white transition duration-300"
           >
             📧 Email Me
           </a>
@@ -416,7 +603,7 @@ function App() {
           <a
             href="https://github.com/priyanshurawat15-dev"
             target="_blank"
-            className="bg-[#111827] px-6 py-3 rounded-xl border border-purple-500/30 hover:bg-purple-600 transition duration-300"
+            className="bg-[#111827] px-6 py-3 border border-purple-500 rounded-lg hover:bg-purple-600 hover:text-white transition duration-300"
           >
             💻 GitHub
           </a>
@@ -425,7 +612,7 @@ function App() {
           <a
             href="https://instagram.com/priyanshurawat_15"
             target="_blank"
-            className="bg-[#111827] px-6 py-3 rounded-xl border border-purple-500/30 hover:bg-purple-600 transition duration-300"
+            className="bg-[#111827] px-6 py-3 border border-purple-500 rounded-lg hover:bg-purple-600 hover:text-white transition duration-300"
           >
             📱 Instagram
           </a>
@@ -433,7 +620,8 @@ function App() {
           <a
             href="https://linkedin.com/in/priyanshurawat15/"
             target="_blank"
-            className="bg-[#111827] px-6 py-3 rounded-xl border border-purple-500/30 hover:bg-purple-600 transition duration-300"
+            
+            className="bg-[#111827] px-6 py-3 border border-purple-500 rounded-lg hover:bg-purple-600 hover:text-white transition duration-300"
           >
             🔗 LinkedIn
           </a>
@@ -493,10 +681,14 @@ function App() {
     </div>
 
   </div>
-
+  
   <div className="border-t border-gray-700 mt-12 pt-6 text-center text-sm">
-    © {new Date().getFullYear()} All Rights Reserved | Designed By Priyanshu Rawat
-  </div>
+  © {new Date().getFullYear()} All Rights Reserved  
+  <br />
+  <span className="font-bold">Designed by Priyanshu Rawat</span> | March 2026
+</div>
+
+
 </footer>
 
 
