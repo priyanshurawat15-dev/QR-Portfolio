@@ -127,7 +127,7 @@ function App() {
       {/* Hero Section */}
       <section
         id="home"
-        className="min-h-screen flex items-center justify-center px-10 relative overflow-hidden"
+        className="min-h-screen flex items-center justify-center px-6 sm:px-10 relative overflow-hidden"
       >
         <ParticlesBackground />
 
@@ -136,7 +136,7 @@ function App() {
           <div>
             <h2 className="text-3xl text-gray-400 mb-2">Hello !!</h2>
 
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-6">
               I’m <span className="text-purple-500">Priyanshu Rawat</span>
             </h1>
 
@@ -151,7 +151,8 @@ function App() {
             </a>
 
 
-          <div className="flex gap-6 mt-8">
+          <div className="flex gap-6 justify-center mt-4">
+
   
   <a href="https://linkedin.com" target="_blank"
  className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
@@ -215,8 +216,11 @@ function App() {
     <img
       src={photo6}   // tum already photo1 import kar rahe ho upar
       alt="Priyanshu Rawat"
-      className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl border-4 border-purple-400 shadow-xl"
+      className="w-48 h-48 sm:w-60 sm:h-60 md:w-80 md:h-80 object-cover rounded-2xl border-4 border-purple-400 shadow-xl"
+    
+    
     />
+
   </div>
 
   {/* Right Side - Text */}
