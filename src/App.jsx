@@ -131,7 +131,7 @@ function App() {
       >
         <ParticlesBackground />
 
-        <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center max-w-7xl w-full">
+        <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center max-w-7xl w-full text-center md:text-left">
 
           <div>
             <h2 className="text-3xl text-gray-400 mb-2">Hello !!</h2>
@@ -150,36 +150,33 @@ function App() {
               About Me ↓
             </a>
 
+<div className="flex flex-wrap justify-center md:justify-start gap-6 mt-8">
 
-            <div className="flex flex-wrap justify-center md:justify-start gap-6 mt-8">
+<a href="https://linkedin.com" target="_blank"
+className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
+<FaLinkedin className="text-2xl md:text-3xl" />
+</a>
 
-  
-  <a href="https://linkedin.com" target="_blank"
- className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
-    <FaLinkedin className="text-2xl md:text-3xl" />
-  </a>
+<a href="https://github.com" target="_blank"
+className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
+<FaGithub className="text-2xl md:text-3xl" />
+</a>
 
-  <a href="https://github.com" target="_blank"
- className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
-    <FaGithub className="text-2xl md:text-3xl" />
-  </a>
+<a href="https://twitter.com" target="_blank"
+className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
+<FaTwitter className="text-2xl md:text-3xl" />
+</a>
 
-  <a href="https://twitter.com" target="_blank"
- className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
-    <FaTwitter className="text-2xl md:text-3xl" />
-  </a>
+<a href="https://instagram.com" target="_blank"
+className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
+<FaInstagram className="text-2xl md:text-3xl" />
+</a>
 
-  <a href="https://instagram.com" target="_blank"
-  className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
-    <FaInstagram className="text-2xl md:text-3xl" />
-  </a>
+<a href="https://discord.com" target="_blank"
+className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
+<FaDiscord className="text-2xl md:text-3xl"/>
+</a>
 
-    <a href="https://discord.com" target="_blank"
-    className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_#22d3ee] transition-all duration-300">
-    <FaDiscord className="text-2xl md:text-3xl"/>
-  </a>
-
-<div className="flex flex-wrap justify-center md:justify-start gap-6 mt-8 mb-6"></div>
 </div>
 </div>
           <motion.div
