@@ -202,7 +202,7 @@ function App() {
       {/* About Section */}
 <motion.section
   id="about"
-  className="min-h-screen flex items-center justify-center px-6"
+  className="min-h-screen flex items-center justify-center px-6 py-16"
   variants={sectionVariant}
   initial="hidden"
   whileInView="visible"
@@ -334,7 +334,7 @@ function App() {
       {/* Projects Section */}
       <motion.section
         id="projects"
-        className="min-h-screen flex items-center justify-center px-6"
+        className="min-h-screen flex items-center justify-center px-6 py-16"
         variants={sectionVariant}
         initial="hidden"
         whileInView="visible"
@@ -448,7 +448,7 @@ function App() {
       {/* Gallery Section */}
       <motion.section
         id="gallery"
-        className="min-h-screen flex items-center justify-center px-6"
+        className="min-h-screen flex items-center justify-center px-6 py-16"
         variants={sectionVariant}
         initial="hidden"
         whileInView="visible"
@@ -537,7 +537,9 @@ function App() {
               className="w-full h-48 object-cover rounded-lg mb-4"
             />
             <h3 className="text-lg font-semibold">{song.title}</h3>
-            <p className="text-gray-400 text-sm">{song.artist}</p>
+            
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              {song.artist}</p>
           </motion.a>
         );
       })}
@@ -555,7 +557,7 @@ function App() {
         transition={{ duration: 0.6 }}
         className="min-h-screen flex flex-col items-center justify-center px-6 bg-[#0f172a]"
       >
-        <h2 className="text-4xl font-bold text-purple-500 mb-6">
+        <h2 className="text-4xl font-bold text-purple-500 mb-10">
           Get In Touch
         </h2>
       
