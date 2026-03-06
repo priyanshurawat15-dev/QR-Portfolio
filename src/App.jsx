@@ -71,7 +71,7 @@ function App() {
 
 
 
-  const roles = ["Full Stack Developer", "Problem Solver", "Building Cool Things"];
+  const roles = ["Wanna be a Full Stack Developer", "Problem Solver", "Building Cool Things"];
   const [text, setText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
