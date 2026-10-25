@@ -233,7 +233,7 @@ className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] 
     </h3>
     
    <p className="text-gray-300 text-lg leading-relaxed mb-2">
-      Hello Sir 😊 !
+      Hello Sir/ Ma'am 😊 !
     </p>
     
     <p className="text-gray-300 text-lg leading-relaxed mb-4">
@@ -256,7 +256,7 @@ className="w-14 h-14 flex items-center justify-center rounded-full bg-[#0f172a] 
 
      <p className="text-gray-400 mt-4 leading-relaxed mb-4">
        Currently exploring React, UI/UX design, and creative
-      front-end interactions.
+      front-end interactions. 
       </p>
 
     <div className="mt-6 text-gray-400 space-y-2">
