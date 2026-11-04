@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
+import HowItWorks from "./components/HowItWorks";
 
 // Local assets
 import photo1 from "./assets/photos/photo1.jpg";
@@ -47,17 +48,15 @@ import {
   MapPin,
   Phone,
   Code2,
-  Sparkles,
   Terminal,
+  Lightbulb,
   Layers,
   GraduationCap,
   Copy,
   Check,
   Send,
   X,
-  Play,
   Disc3,
-  Calendar,
   CheckCircle2,
   AlertCircle,
 } from "lucide-react";
@@ -79,7 +78,7 @@ export default function App() {
       image: song1,
       link: "https://open.spotify.com/track/5ThyDv6aRVU8AH4vXQNldF",
       year: "2023",
-      tag: "Indie / Acoustic",
+      tag: "Indie acoustic",
     },
     {
       title: "Arz Kiya Hai",
@@ -87,7 +86,7 @@ export default function App() {
       image: song2,
       link: "https://open.spotify.com/track/1bMkimTb47umgNP6xCi4A1",
       year: "2024",
-      tag: "Singer-Songwriter",
+      tag: "Singer-songwriter",
     },
     {
       title: "For A Reason",
@@ -103,7 +102,7 @@ export default function App() {
       image: song4,
       link: "https://open.spotify.com/track/0q5e5KtUOhYQujmhLP0pKd",
       year: "2023",
-      tag: "Acoustic Pop",
+      tag: "Acoustic pop",
     },
     {
       title: "Faqeeran",
@@ -111,7 +110,7 @@ export default function App() {
       image: song5,
       link: "https://open.spotify.com/track/7DlNgLpxX3gPh3tzqrY7tL",
       year: "2024",
-      tag: "Folk / Ambient",
+      tag: "Folk",
     },
     {
       title: "Sahiba",
@@ -119,19 +118,19 @@ export default function App() {
       image: song6,
       link: "https://open.spotify.com/track/0eLtIxPRNJfsmehITZ1qaJ",
       year: "2024",
-      tag: "Indie Melodic",
+      tag: "Indie",
     },
   ];
   const [activeSong, setActiveSong] = useState(0);
 
   // Gallery photos
   const moments = [
-    { src: photo1, caption: "Portrait — Priyanshu Rawat", location: "Uttarakhand, India", tag: "Profile" },
-    { src: photo2, caption: "Campus Days & Coding Sessions", location: "Graphic Era Hill University", tag: "Campus Life" },
-    { src: photo3, caption: "Foothills of the Himalayas", location: "Uttarakhand, India", tag: "Nature & Focus" },
-    { src: photo4, caption: "Student Moments & Community", location: "Dehradun", tag: "Moments" },
-    { src: photo5, caption: "College Event & Collaboration", location: "Campus", tag: "Community" },
-    { src: photo6, caption: "Casual Engineering Mindset", location: "Uttarakhand", tag: "Personal" },
+    { src: photo1, caption: "Portrait", location: "Uttarakhand, India", tag: "Profile" },
+    { src: photo2, caption: "Campus study and coding sessions", location: "Graphic Era Hill University", tag: "Campus" },
+    { src: photo3, caption: "Foothills of the Himalayas", location: "Uttarakhand, India", tag: "Nature" },
+    { src: photo4, caption: "With friends and classmates", location: "Dehradun", tag: "Life" },
+    { src: photo5, caption: "Campus events and college days", location: "Campus", tag: "College" },
+    { src: photo6, caption: "Everyday moments", location: "Uttarakhand", tag: "Personal" },
   ];
   const [activePhoto, setActivePhoto] = useState(null);
 
@@ -157,13 +156,13 @@ export default function App() {
       .then(
         () => {
           setFormStatus("success");
-          setStatusMessage("Thank you! Your message has been sent successfully. I'll get back to you shortly.");
+          setStatusMessage("Thank you! Your message has been sent. I'll get back to you shortly.");
           if (formRef.current) formRef.current.reset();
         },
         () => {
           setFormStatus("error");
           setStatusMessage(
-            "Couldn't send directly through the form. Please reach out to me directly at priyanshurwt28@gmail.com."
+            "Couldn't send directly through the form. Please email me directly at priyanshurwt28@gmail.com."
           );
         }
       );
@@ -171,23 +170,23 @@ export default function App() {
 
   const skillsData = {
     languages: [
-      { name: "C", icon: <SiC className="text-sky-400" />, level: "Core Foundations" },
-      { name: "C++", icon: <SiCplusplus className="text-blue-400" />, level: "DSA & Problem Solving" },
-      { name: "Java", icon: <FaJava className="text-amber-500" />, level: "OOP & Concepts" },
-      { name: "Python", icon: <SiPython className="text-yellow-400" />, level: "Scripting & Logic" },
-      { name: "JavaScript", icon: <FaJsSquare className="text-yellow-400" />, level: "ES6+, Modern Web" },
+      { name: "C", icon: <SiC className="text-sky-400" />, level: "Foundations & memory" },
+      { name: "C++", icon: <SiCplusplus className="text-blue-400" />, level: "Data structures & algorithms" },
+      { name: "Java", icon: <FaJava className="text-amber-500" />, level: "Object-oriented programming" },
+      { name: "Python", icon: <SiPython className="text-yellow-400" />, level: "Scripting & logic" },
+      { name: "JavaScript", icon: <FaJsSquare className="text-yellow-400" />, level: "Modern ES6+ & web logic" },
     ],
     frontend: [
-      { name: "React.js", icon: <FaReact className="text-cyan-400" />, level: "Component Architecture" },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" />, level: "Utility-First UI" },
-      { name: "HTML5", icon: <FaHtml5 className="text-orange-500" />, level: "Semantic Markup" },
-      { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" />, level: "Responsive Layouts & Flexbox" },
+      { name: "React.js", icon: <FaReact className="text-cyan-400" />, level: "Components, hooks & state" },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" />, level: "Responsive utility styling" },
+      { name: "HTML5", icon: <FaHtml5 className="text-orange-500" />, level: "Semantic markup & accessibility" },
+      { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" />, level: "Flexbox, Grid & animations" },
     ],
     workflow: [
-      { name: "Git & GitHub", icon: <FaGitAlt className="text-orange-500" />, level: "Version Control" },
-      { name: "Vite", icon: <SiVite className="text-purple-400" />, level: "Build Tooling & HMR" },
-      { name: "UI/UX Design", icon: <Layers className="text-indigo-400" size={18} />, level: "Clean Prototyping" },
-      { name: "Responsive Design", icon: <Code2 className="text-emerald-400" size={18} />, level: "Cross-Device Fluidity" },
+      { name: "Git & GitHub", icon: <FaGitAlt className="text-orange-500" />, level: "Version control & collaboration" },
+      { name: "Vite", icon: <SiVite className="text-purple-400" />, level: "Fast development & build tooling" },
+      { name: "UI & Layout", icon: <Layers className="text-[#D4A373]" size={18} />, level: "Hierarchy, spacing & usability" },
+      { name: "Responsive Design", icon: <Code2 className="text-[#388563]" size={18} />, level: "Cross-device layouts" },
     ],
   };
 
@@ -195,55 +194,80 @@ export default function App() {
     {
       id: "01",
       title: "Smart Vehicle QR System",
-      category: "Emergency Assistance & IoT Concept",
+      category: "Emergency & Safety Utility",
       summary:
-        "A contactless QR-based platform enabling bystanders and emergency responders to reach vehicle owners instantly during critical situations, parking obstructions, or security events—all while keeping personal phone numbers private.",
+        "A web application that generates unique QR stickers for vehicle dashboards. If a parked car is blocking someone or in an emergency, anyone can scan the QR code to contact the owner right away—without exposing anyone’s personal phone number.",
       image: vehicleqr,
-      tags: ["React", "JavaScript", "Tailwind CSS", "QR Engine", "Safety Tech"],
+      tags: ["React", "JavaScript", "Tailwind CSS", "QR Logic", "Privacy"],
       githubUrl: "https://github.com/priyanshurawat15-dev/QR-Portfolio",
       liveUrl: "https://github.com/priyanshurawat15-dev/QR-Portfolio",
       highlights: [
-        "Instant emergency routing via dynamic QR scanning",
-        "Privacy-preserving owner notification flow",
-        "Mobile-first responsive design for field use",
+        "Generates a unique QR code for each vehicle.",
+        "Allows people to send messages or alerts to vehicle owners.",
+        "Keeps the owner's personal phone number private.",
+        "Works on mobile devices for quick and easy access."
       ],
+      steps: [
+        {
+          title: "Scan QR",
+          description: "Scan the vehicle's QR code."
+        },
+        {
+          title: "Choose Action",
+          description: "Report, contact or get help."
+        },
+        {
+          title: "Owner Notified",
+          description: "The owner receives an alert."
+        }
+      ],
+
     },
+
     {
       id: "02",
-      title: "Free Slot Finder Portal",
-      category: "Campus Academic Utility",
+      title: "Free Slot Finder",
+      category: "Campus Timetable Tool",
       summary:
-        "An academic scheduling tool engineered to assist university students in quickly discovering unoccupied lecture rooms and verifying faculty availability in real time during free timetable intervals.",
+        "The idea for this project came from a problem we noticed in our college. Finding available classrooms, checking teacher schedules and arranging venues for college events often involved asking different people and getting approvals manually.",
+      intro:
+        "We started building Free Slot Finder to make these tasks easier and bring them together in one place.",
       image: slotfinder,
-      tags: ["React", "State Management", "Academic Portal", "Modern CSS", "Vite"],
-      githubUrl: "https://github.com/priyanshurawat15-dev",
-      liveUrl: "https://github.com/priyanshurawat15-dev",
+      tags: ["React", "JavaScript", "Tailwind CSS", "Vite"],
+      githubUrl: "https://github.com/priyanshurawat15-dev/QuickSlot-Smart-Free-Slot-Finder",
+      liveUrl: "https://quickslotfinder.vercel.app/",
+
       highlights: [
-        "Real-time room occupancy and slot filtering",
-        "Streamlined timetable navigation for students",
-        "Clean, intuitive search with zero learning curve",
+        "Helps teachers find available classrooms and labs for extra classes, practicals and other sessions.",
+        "Allows students to check teacher availability and find when they are free.",
+        "Helps college clubs request venues for meetings, workshops and events.",
+        "Makes it easier for the administration to manage room bookings, venue requests and approvals."
       ],
     },
     {
       id: "03",
-      title: "Personal Portfolio & Digital Showcase",
-      category: "Frontend Engineering & Design",
+      title: "Personal Portfolio",
+      category: "Portfolio Website",
       summary:
-        "A thoughtfully designed developer portfolio featuring case studies, curated audio playlist integrations, an interactive visual diary, and direct contact pipelines.",
+        "I built this portfolio to have one place where I can share my work, introduce myself, and show what I've been learning as a developer. It brings together my projects, skills, and a few personal interests.",
+
+      intro:
+        "The website also includes:",
       image: portfolio,
-      tags: ["React 19", "Vite", "Tailwind CSS", "Framer Motion", "EmailJS"],
+      tags: ["React", "Vite", "Tailwind CSS", "EmailJS"],
       githubUrl: "https://github.com/priyanshurawat15-dev/QR-Portfolio",
       liveUrl: "https://priyanshu-rawat.vercel.app",
       highlights: [
-        "Art-directed typography and editorial dark theme",
-        "Interactive Spotify playlist player & moments lightbox",
-        "Production-grade form validation and EmailJS handler",
+        "A section to showcase my projects and the tools used to build them.",
+        "Little bit about myself & an interactive music playlist.",
+        "A photo gallery or glimps of me",
+        "A contact form so visitors can reach me directly.",
       ],
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#0B0F17] text-slate-100 font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
+    <div className="min-h-screen bg-[#121110] text-[#EDE8E1] font-sans selection:bg-[#2E6F52]/40 selection:text-[#F6F3EE]">
       <Navbar />
 
       <main className="relative z-10">
@@ -254,61 +278,60 @@ export default function App() {
           id="home"
           className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 bg-dots overflow-hidden"
         >
-          {/* Subtle gradient glow - restrained, not overwhelming */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-indigo-600/10 via-purple-600/10 to-transparent blur-3xl pointer-events-none rounded-full" />
+          {/* Subtle warm ambient depth */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#C49B66]/[0.03] blur-3xl pointer-events-none rounded-full" />
 
           <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Content Column */}
             <div className="lg:col-span-7 flex flex-col items-start text-left">
               {/* Status Pill */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-white/[0.08] text-xs font-mono text-slate-300 mb-6">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>B.Tech CSE Undergrad</span>
-                <span className="text-slate-600">•</span>
-                <span className="text-indigo-300">Uttarakhand, India</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1A1715] border border-[#F0E6DA]/[0.08] text-xs font-mono text-[#DDD4C8] mb-6">
+                <span className="w-2 h-2 rounded-full bg-[#2E6F52] animate-pulse"></span>
+                <span>Computer Science Student</span>
+                <span className="text-[#8C8276]">•</span>
+                <span className="text-[#C49B66]">Uttarakhand, India</span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1] mb-6">
-                Building practical software with{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-indigo-200 to-purple-300">
-                  clean craft & modern UI.
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#F6F3EE] leading-[1.12] mb-6">
+                Hi, I'm Priyanshu Rawat.{" "}
+                <span className="block text-[#D4A373] mt-1 font-semibold">
+                  Love to work on solving real-world problem's project.
                 </span>
               </h1>
 
               {/* Subtitle / Bio Pitch */}
-              <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed mb-8">
-                I’m <strong className="font-semibold text-white">Priyanshu Rawat</strong>, a Computer Science student and frontend developer.
-                I build responsive web applications, explore modern React architectures, and solve real-world problems through functional, intuitive interfaces.
+              <p className="text-base sm:text-lg text-[#DDD4C8] max-w-2xl leading-relaxed mb-8">
+                I'm a Computer Science student at Graphic Era Hill University in Uttarakhand. I enjoy exploring ideas, learn & build new things, and figuring out real-world problems.
               </p>
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 mb-10 w-full sm:w-auto">
                 <a
                   href="#projects"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition-all shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/35 hover:-translate-y-0.5"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#2E6F52] hover:bg-[#388563] text-[#F6F3EE] font-medium text-sm transition-all shadow-md shadow-[#2E6F52]/20 hover:-translate-y-0.5"
                 >
-                  Explore Selected Work
+                  View Projects
                   <ArrowUpRight size={16} />
                 </a>
                 <a
                   href="#about"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-white/[0.08] text-slate-200 hover:text-white font-medium text-sm transition-all hover:-translate-y-0.5"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#1C1917] hover:bg-[#24201C] border border-[#F0E6DA]/[0.1] text-[#DDD4C8] hover:text-[#F6F3EE] font-medium text-sm transition-all hover:-translate-y-0.5"
                 >
-                  About My Journey
+                  About Me
                 </a>
               </div>
 
               {/* Social Channels Strip */}
-              <div className="flex items-center gap-3 pt-6 border-t border-white/[0.08] w-full">
-                <span className="text-xs font-mono text-slate-400 uppercase tracking-wider mr-2">
+              <div className="flex items-center gap-3 pt-6 border-t border-[#F0E6DA]/[0.08] w-full">
+                <span className="text-xs font-mono text-[#A09689] uppercase tracking-wider mr-2">
                   Connect:
                 </span>
                 <a
                   href="https://github.com/priyanshurawat15-dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg bg-slate-900/70 border border-white/[0.08] text-slate-300 hover:text-white hover:border-indigo-500/50 hover:bg-indigo-500/10 transition"
+                  className="p-2.5 rounded-lg bg-[#1A1715] border border-[#F0E6DA]/[0.08] text-[#DDD4C8] hover:text-[#F6F3EE] hover:border-[#C49B66]/40 hover:bg-[#231F1C] transition"
                   aria-label="GitHub Profile"
                   title="GitHub"
                 >
@@ -318,7 +341,7 @@ export default function App() {
                   href="https://linkedin.com/in/priyanshurawat15/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg bg-slate-900/70 border border-white/[0.08] text-slate-300 hover:text-white hover:border-indigo-500/50 hover:bg-indigo-500/10 transition"
+                  className="p-2.5 rounded-lg bg-[#1A1715] border border-[#F0E6DA]/[0.08] text-[#DDD4C8] hover:text-[#F6F3EE] hover:border-[#C49B66]/40 hover:bg-[#231F1C] transition"
                   aria-label="LinkedIn Profile"
                   title="LinkedIn"
                 >
@@ -328,7 +351,7 @@ export default function App() {
                   href="https://instagram.com/priyanshurawat_15"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg bg-slate-900/70 border border-white/[0.08] text-slate-300 hover:text-white hover:border-indigo-500/50 hover:bg-indigo-500/10 transition"
+                  className="p-2.5 rounded-lg bg-[#1A1715] border border-[#F0E6DA]/[0.08] text-[#DDD4C8] hover:text-[#F6F3EE] hover:border-[#C49B66]/40 hover:bg-[#231F1C] transition"
                   aria-label="Instagram Profile"
                   title="Instagram"
                 >
@@ -338,7 +361,7 @@ export default function App() {
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg bg-slate-900/70 border border-white/[0.08] text-slate-300 hover:text-white hover:border-indigo-500/50 hover:bg-indigo-500/10 transition"
+                  className="p-2.5 rounded-lg bg-[#1A1715] border border-[#F0E6DA]/[0.08] text-[#DDD4C8] hover:text-[#F6F3EE] hover:border-[#C49B66]/40 hover:bg-[#231F1C] transition"
                   aria-label="Twitter Profile"
                   title="Twitter"
                 >
@@ -348,7 +371,7 @@ export default function App() {
                   href="https://discord.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg bg-slate-900/70 border border-white/[0.08] text-slate-300 hover:text-white hover:border-indigo-500/50 hover:bg-indigo-500/10 transition"
+                  className="p-2.5 rounded-lg bg-[#1A1715] border border-[#F0E6DA]/[0.08] text-[#DDD4C8] hover:text-[#F6F3EE] hover:border-[#C49B66]/40 hover:bg-[#231F1C] transition"
                   aria-label="Discord"
                   title="Discord"
                 >
@@ -360,49 +383,49 @@ export default function App() {
             {/* Right Card / Identity Column */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-sm">
-                {/* Architectural profile card */}
-                <div className="surface-card rounded-2xl p-4 bg-slate-900/90 border border-white/[0.08] shadow-2xl relative z-10">
+                {/* Profile card */}
+                <div className="surface-card rounded-2xl p-4 bg-[#1A1715] border border-[#F0E6DA]/[0.08] shadow-2xl relative z-10">
                   {/* Photo container */}
-                  <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-slate-950 mb-4 border border-white/[0.05]">
+                  <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-[#121110] mb-4 border border-[#F0E6DA]/[0.06]">
                     <img
                       src={photo1}
                       alt="Priyanshu Rawat portrait"
-                      className="w-full h-full object-cover object-top filter contrast-[1.03] transition-transform duration-700 hover:scale-105"
+                      className="w-full h-full object-cover object-top filter contrast-[1.02] transition-transform duration-700 hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
-                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/80 via-transparent to-transparent pointer-events-none" />
+
                     {/* Location Badge on Photo */}
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono bg-slate-900/90 backdrop-blur-md px-3 py-2 rounded-lg border border-white/[0.1]">
-                      <span className="flex items-center gap-1.5 text-slate-200">
-                        <MapPin size={13} className="text-indigo-400" />
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono bg-[#161412]/90 backdrop-blur-md px-3 py-2 rounded-lg border border-[#F0E6DA]/[0.1]">
+                      <span className="flex items-center gap-1.5 text-[#F6F3EE]">
+                        <MapPin size={13} className="text-[#C49B66]" />
                         Uttarakhand, IN
                       </span>
-                      <span className="text-emerald-400 font-medium">B.Tech 2026</span>
+                      <span className="text-[#2E6F52] font-medium">B.Tech 2028</span>
                     </div>
                   </div>
 
-                  {/* Quick dossier strip below photo */}
+                  {/* Quick info strip below photo */}
                   <div className="space-y-2 text-xs">
-                    <div className="flex items-center justify-between py-1.5 px-2 rounded-lg bg-white/[0.02]">
-                      <span className="text-slate-400 font-mono">Specialization</span>
-                      <span className="font-medium text-slate-200">Frontend & Web Apps</span>
+                    <div className="flex items-center justify-between py-1.5 px-2.5 rounded-lg bg-[#141210]">
+                      <span className="text-[#A09689] font-mono">Focus</span>
+                      <span className="font-medium text-[#EDE8E1]">Frontend & Web Apps</span>
                     </div>
-                    <div className="flex items-center justify-between py-1.5 px-2 rounded-lg bg-white/[0.02]">
-                      <span className="text-slate-400 font-mono">Primary Stack</span>
-                      <span className="font-medium text-slate-200">React, JavaScript, Tailwind</span>
+                    <div className="flex items-center justify-between py-1.5 px-2.5 rounded-lg bg-[#141210]">
+                      <span className="text-[#A09689] font-mono">Core Stack</span>
+                      <span className="font-medium text-[#EDE8E1]">React, JavaScript, Tailwind</span>
                     </div>
-                    <div className="flex items-center justify-between py-1.5 px-2 rounded-lg bg-white/[0.02]">
-                      <span className="text-slate-400 font-mono">Status</span>
-                      <span className="font-medium text-emerald-300 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        Available for Work
+                    <div className="flex items-center justify-between py-1.5 px-2.5 rounded-lg bg-[#141210]">
+                      <span className="text-[#A09689] font-mono">Status</span>
+                      <span className="font-medium text-[#388563] flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#2E6F52]"></span>
+                        Open to work...
                       </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Decorative border highlight accent */}
-                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500/20 to-purple-500/20 blur-xl opacity-50 -z-10" />
+                {/* Subtle warm backing glow */}
+                <div className="absolute -inset-1 rounded-2xl bg-[#C49B66]/[0.08] blur-xl opacity-60 -z-10" />
               </div>
             </div>
           </div>
@@ -411,23 +434,23 @@ export default function App() {
         {/* =========================================================================
             ABOUT SECTION
             ========================================================================= */}
-        <section id="about" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-white/[0.06] bg-[#0A0E17]">
+        <section id="about" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-[#F0E6DA]/[0.08] bg-[#171513]">
           <div className="max-w-7xl mx-auto">
             {/* Section Tag & Heading */}
             <div className="flex flex-col mb-16">
-              <span className="text-xs font-mono uppercase tracking-widest text-indigo-400 mb-2">
-                // 01. BACKGROUND & PHILOSOPHY
+              <span className="text-xs font-mono uppercase tracking-widest text-[#C49B66] mb-2 font-medium">
+                About me
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
-                Turning curiosity into functional code.
+              <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F6F3EE]">
+                A bit about who I am & what I do.
               </h2>
             </div>
 
             <div className="grid lg:grid-cols-12 gap-12 items-start">
               {/* Photo & Identity side card */}
               <div className="lg:col-span-5 space-y-6">
-                <div className="surface-card rounded-2xl p-4 bg-slate-900/80 border border-white/[0.08]">
-                  <div className="aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-slate-950">
+                <div className="surface-card rounded-2xl p-4 bg-[#1A1715] border border-[#F0E6DA]/[0.08]">
+                  <div className="aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-[#121110]">
                     <img
                       src={photo6}
                       alt="Priyanshu Rawat"
@@ -435,75 +458,93 @@ export default function App() {
                     />
                   </div>
                   <div className="space-y-3 px-1">
-                    <h3 className="font-display text-xl font-bold text-white">Priyanshu Rawat</h3>
-                    <p className="text-xs text-slate-400 font-mono">
+                    <h3 className="font-display text-xl font-bold text-[#F6F3EE]">Priyanshu Rawat</h3>
+                    <p className="text-xs text-[#A09689] font-mono">
                       Computer Science & Engineering Student
                     </p>
-                    <div className="pt-3 border-t border-white/[0.06] flex flex-col gap-2 text-xs text-slate-300">
+                    <div className="pt-3 border-t border-[#F0E6DA]/[0.06] flex flex-col gap-2 text-xs text-[#DDD4C8]">
                       <div className="flex items-center gap-2">
-                        <MapPin size={14} className="text-indigo-400 shrink-0" />
+                        <MapPin size={14} className="text-[#C49B66] shrink-0" />
                         <span>Uttarakhand, India</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <GraduationCap size={14} className="text-indigo-400 shrink-0" />
+                        <GraduationCap size={14} className="text-[#C49B66] shrink-0" />
                         <span>B.Tech in Computer Science & Engineering</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Mail size={14} className="text-indigo-400 shrink-0" />
+                        <Mail size={14} className="text-[#C49B66] shrink-0" />
                         <span className="truncate">priyanshurwt28@gmail.com</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Quick highlights pill grid */}
+                {/* Quick stats pill grid */}
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="p-4 rounded-xl bg-slate-900/50 border border-white/[0.06]">
-                    <div className="text-2xl font-bold text-indigo-300 font-display">03+</div>
-                    <div className="text-xs text-slate-400 mt-1">Completed Practical Projects</div>
+                  <div className="p-4 rounded-xl bg-[#1A1715] border border-[#F0E6DA]/[0.06]">
+                    <div className="text-2xl font-bold text-[#C49B66] font-display">03+</div>
+                    <div className="text-xs text-[#A09689] mt-1">Practical Projects Built</div>
                   </div>
-                  <div className="p-4 rounded-xl bg-slate-900/50 border border-white/[0.06]">
-                    <div className="text-2xl font-bold text-indigo-300 font-display">2026</div>
-                    <div className="text-xs text-slate-400 mt-1">Graduation Cohort</div>
+                  <div className="p-4 rounded-xl bg-[#1A1715] border border-[#F0E6DA]/[0.06]">
+                    <div className="text-2xl font-bold text-[#C49B66] font-display">2028</div>
+                    <div className="text-xs text-[#A09689] mt-1">Graduation Cohort</div>
                   </div>
                 </div>
               </div>
 
               {/* Narrative Content */}
-              <div className="lg:col-span-7 space-y-6 text-slate-300 leading-relaxed text-base">
-                <p className="text-lg text-slate-200 font-medium leading-relaxed">
-                  I believe software engineering is most rewarding when it bridges everyday human friction with simple, robust digital solutions.
+              <div className="lg:col-span-7 space-y-6 text-[#DDD4C8] leading-relaxed text-base">
+                <p className="text-lg text-[#F6F3EE] font-medium leading-relaxed">
+                  I'm Priyanshu, from Srinagar Garhwal, Uttarakhand, currently pursuing Computer Science and Engineering at Graphic Era Hill University, Dehradun.
                 </p>
 
                 <p>
-                  As an engineering student based in Uttarakhand, I spend my days writing code, experimenting with modern frontend stacks, and building tools that address real problems—whether that’s organizing student schedules or building instant QR emergency notification flows.
+                  I started learning web development because I was curious about how websites and web apps work. Over time, I started enjoying the process of building things that people can actually use.
                 </p>
 
                 <p>
-                  I am still actively learning and expanding my horizons every day. Rather than claiming decades of mastery, I pride myself on genuine curiosity, persistence when troubleshooting edge cases, and a strong work ethic. Every project I design and deploy makes me a more versatile engineer.
+                  I like working on problems I see around me, especially in college or everyday life. For example, I built a Smart Vehicle QR system that helps people contact vehicle owners during parking issues without sharing their personal phone numbers. I'm also working on Slot Finder (IN PROGRESS ), a project that helps students find free classrooms and check teacher availability between classes.
                 </p>
 
-                {/* Three Focus Pillars */}
+                <p>
+                  Apart from projects, I'm also working on improving my programming skills and learning more about computer science. In my free time, I enjoy listening to music, exploring the hills around Uttarakhand, and spending time outdoors.
+                </p>
+
+                {/* Two Focus Pillars */}
                 <div className="pt-6 grid sm:grid-cols-2 gap-4">
-                  <div className="p-5 rounded-xl bg-slate-900/60 border border-white/[0.06] hover:border-indigo-500/30 transition">
-                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-3">
+                  <div className="p-5 rounded-xl bg-[#1A1715] border border-[#F0E6DA]/[0.06] hover:border-[#C49B66]/30 transition">
+                    <div className="w-8 h-8 rounded-lg bg-[#2E6F52]/15 text-[#388563] flex items-center justify-center mb-3">
                       <Code2 size={18} />
                     </div>
-                    <h4 className="font-semibold text-white text-sm mb-1.5">Frontend Engineering</h4>
-                    <p className="text-xs text-slate-400 leading-normal">
-                      Designing responsive, accessible web interfaces in React and Tailwind CSS with clean state architectures.
+                    <h4 className="font-semibold text-[#F6F3EE] text-sm mb-1.5">Problem Solving</h4>
+                    <p className="text-xs text-[#A09689] leading-normal">
+                      Working on ideas that solve everyday problems and make things easier for people.
                     </p>
                   </div>
 
-                  <div className="p-5 rounded-xl bg-slate-900/60 border border-white/[0.06] hover:border-indigo-500/30 transition">
-                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-3">
+                  <div className="p-5 rounded-xl bg-[#1A1715] border border-[#F0E6DA]/[0.06] hover:border-[#C49B66]/30 transition">
+                    <div className="w-8 h-8 rounded-lg bg-[#C49B66]/15 text-[#D4A373] flex items-center justify-center mb-3">
                       <Terminal size={18} />
                     </div>
-                    <h4 className="font-semibold text-white text-sm mb-1.5">Core Computing Foundations</h4>
-                    <p className="text-xs text-slate-400 leading-normal">
-                      Solid understanding of data structures, algorithms, and computational logic in C, C++, and Python.
+                    <h4 className="font-semibold text-[#F6F3EE] text-sm mb-1.5">Core Computing</h4>
+                    <p className="text-xs text-[#A09689] leading-normal">
+                      Data structures, algorithms, and object-oriented programming in C++.
                     </p>
                   </div>
+
+
+                  <div className="p-5 rounded-xl bg-[#1A1715] border border-[#F0E6DA]/[0.06] hover:border-[#C49B66]/30 transition">
+                    <div className="w-8 h-8 rounded-lg bg-[#C49B66]/15 text-[#D4A373] flex items-center justify-center mb-3">
+                      <Lightbulb size={18} />
+                    </div>
+                    <h4 className="font-semibold text-[#F6F3EE] text-sm mb-1.5">Learning & Building</h4>
+                    <p className="text-xs text-[#A09689] leading-normal">
+                      Learning new concepts, exploring technology, and turning ideas into working projects.
+                    </p>
+                  </div>
+
+
+
                 </div>
               </div>
             </div>
@@ -513,20 +554,20 @@ export default function App() {
         {/* =========================================================================
             SELECTED PROJECTS SECTION
             ========================================================================= */}
-        <section id="projects" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-white/[0.06] bg-[#0B0F17]">
-          <div className="max-w-7xl mx-auto">
+        <section id="projects" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-[#F0E6DA]/[0.08] bg-[#121110]">
+          <div className="max-w-6xl mx-auto">
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-indigo-400 mb-2 block">
-                  // 02. SELECTED WORK & CASE STUDIES
+                <span className="text-xs font-mono uppercase tracking-widest text-[#C49B66] mb-2 block font-medium">
+                  Projects
                 </span>
-                <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
-                  Crafted for practical utility.
+                <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F6F3EE]">
+                  Selected work
                 </h2>
               </div>
-              <p className="text-sm text-slate-400 max-w-md">
-                Each project reflects real problem identification, interface design, and clean frontend implementation.
+              <p className="text-sm text-[#A09689] max-w-md">
+                Projects I’ve built to solve everyday problems and experiment with modern web tools.
               </p>
             </div>
 
@@ -535,35 +576,34 @@ export default function App() {
               {projects.map((project, index) => (
                 <article
                   key={project.id}
-                  className="surface-card rounded-2xl p-6 sm:p-8 lg:p-10 bg-slate-900/60 border border-white/[0.08] hover:border-indigo-500/40 transition-all duration-300"
+                  className="surface-card rounded-2xl p-5 sm:p-6 lg:p-7 bg-[#1A1715] border border-[#F0E6DA]/[0.08] hover:border-[#C49B66]/35 transition-all duration-300"
                 >
-                  <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
                     {/* Visual Mockup Column */}
                     <div
-                      className={`lg:col-span-7 ${
-                        index % 2 === 1 ? "lg:order-2" : "lg:order-1"
-                      }`}
+                      className={`lg:col-span-7 ${index % 2 === 1 ? "lg:order-2" : "lg:order-1"
+                        }`}
                     >
-                      <div className="relative rounded-xl overflow-hidden border border-white/[0.08] bg-slate-950 group">
+                      <div className="relative rounded-xl overflow-hidden border border-[#F0E6DA]/[0.08] bg-[#121110] group">
                         {/* Browser Window Chrome Top */}
-                        <div className="px-4 py-2.5 bg-slate-900/90 border-b border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+                        <div className="px-4 py-2.5 bg-[#141210] border-b border-[#F0E6DA]/[0.06] flex items-center justify-between text-xs text-[#A09689]">
                           <div className="flex items-center gap-1.5">
-                            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/60"></span>
-                            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/60"></span>
-                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60"></span>
+                            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/50"></span>
+                            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/50"></span>
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/50"></span>
                           </div>
-                          <span className="font-mono text-[11px] text-slate-400">
+                          <span className="font-mono text-[11px] text-[#A09689]">
                             {project.title.toLowerCase().replace(/\s+/g, "-")}.app
                           </span>
                           <span className="w-4"></span>
                         </div>
 
                         {/* Image Preview */}
-                        <div className="aspect-[16/10] overflow-hidden bg-slate-900">
+                        <div className="aspect-[4/3] sm:aspect-[3/2] overflow-hidden bg-[#141210]">
                           <img
                             src={project.image}
                             alt={`${project.title} screenshot`}
-                            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                            className="w-full h-full object-contain transition-transform duration-500"
                           />
                         </div>
                       </div>
@@ -571,48 +611,65 @@ export default function App() {
 
                     {/* Content Column */}
                     <div
-                      className={`lg:col-span-5 flex flex-col justify-between ${
-                        index % 2 === 1 ? "lg:order-1" : "lg:order-2"
-                      }`}
+                      className={`lg:col-span-5 flex flex-col justify-between ${index % 2 === 1 ? "lg:order-1" : "lg:order-2"
+                        }`}
                     >
                       <div>
                         {/* Index & Category */}
                         <div className="flex items-center gap-2 mb-3">
-                          <span className="text-xs font-mono font-bold text-indigo-400">
+                          <span className="text-xs font-mono font-bold text-[#C49B66]">
                             {project.id}
                           </span>
-                          <span className="text-slate-600">•</span>
-                          <span className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+                          <span className="text-[#8C8276]">•</span>
+                          <span className="text-xs font-mono text-[#A09689] uppercase tracking-wider">
                             {project.category}
                           </span>
                         </div>
 
                         {/* Project Title */}
-                        <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mb-4">
+                        <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F6F3EE] mb-3">
                           {project.title}
                         </h3>
 
                         {/* Summary */}
-                        <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+                        <p className="text-xs sm:text-sm text-[#DDD4C8] leading-relaxed mb-4">
                           {project.summary}
                         </p>
 
+                        {/* Intro */}
+                        {project.intro && (
+                          <p className="text-xs sm:text-sm text-[#DDD4C8] leading-relaxed mb-4">
+                            {project.intro}
+                          </p>
+                        )}
+
                         {/* Feature Highlights */}
-                        <ul className="space-y-2 mb-6 text-xs sm:text-sm text-slate-300">
+                        <ul className="space-y-1.5 mb-4 text-xs text-[#DDD4C8]">
                           {project.highlights.map((h, i) => (
                             <li key={i} className="flex items-start gap-2">
-                              <span className="text-indigo-400 mt-1">•</span>
+                              <span className="text-[#2E6F52] mt-1 font-bold">•</span>
                               <span>{h}</span>
                             </li>
                           ))}
                         </ul>
+
+
+
+                        {/* How It Works */}
+                        {project.steps?.length > 0 && (
+                          <div className="mb-6">
+                            <HowItWorks steps={project.steps} />
+                          </div>
+                        )}
+
+
 
                         {/* Tech Tag Pills */}
                         <div className="flex flex-wrap gap-2 mb-8">
                           {project.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] border border-white/[0.06] text-slate-300"
+                              className="px-2.5 py-1 rounded-md text-xs font-mono bg-[#141210] border border-[#F0E6DA]/[0.06] text-[#DDD4C8]"
                             >
                               {tag}
                             </span>
@@ -621,24 +678,24 @@ export default function App() {
                       </div>
 
                       {/* Action Links */}
-                      <div className="flex items-center gap-4 pt-4 border-t border-white/[0.06]">
+                      <div className="flex items-center gap-4 pt-4 border-t border-[#F0E6DA]/[0.06]">
                         <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-slate-900 border border-white/[0.08] text-slate-200 hover:text-white hover:border-slate-600 transition"
+                          className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-[#161412] border border-[#F0E6DA]/[0.08] text-[#DDD4C8] hover:text-[#F6F3EE] hover:border-[#C49B66]/40 transition"
                         >
                           <FaGithub size={14} />
-                          Repository
+                          GitHub
                         </a>
                         <a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition"
+                          className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-[#2E6F52] hover:bg-[#388563] text-[#F6F3EE] transition shadow-sm"
                         >
                           <ExternalLink size={14} />
-                          View Project
+                          Live Project
                         </a>
                       </div>
                     </div>
@@ -652,33 +709,33 @@ export default function App() {
         {/* =========================================================================
             TECHNICAL SKILLS SECTION
             ========================================================================= */}
-        <section id="skills" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-white/[0.06] bg-[#0A0E17]">
+        <section id="skills" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-[#F0E6DA]/[0.08] bg-[#171513]">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="flex flex-col mb-16">
-              <span className="text-xs font-mono uppercase tracking-widest text-indigo-400 mb-2">
-                // 03. TECHNICAL CAPABILITIES
+              <span className="text-xs font-mono uppercase tracking-widest text-[#C49B66] mb-2 font-medium">
+                Technical skills
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
-                Tools, technologies & workflows.
+              <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F6F3EE]">
+                Tools & technologies
               </h2>
-              <p className="text-sm text-slate-400 mt-2 max-w-xl">
-                Technologies and programming languages I use to build robust software and user-centered web applications.
+              <p className="text-sm text-[#A09689] mt-2 max-w-xl">
+                The programming languages, frameworks, and tools I use for coursework and personal projects.
               </p>
             </div>
 
             {/* Structured Engineering Pillars */}
             <div className="grid md:grid-cols-3 gap-8">
               {/* Category 1: Languages */}
-              <div className="surface-card rounded-2xl p-6 bg-slate-900/70 border border-white/[0.08] flex flex-col justify-between">
+              <div className="surface-card rounded-2xl p-6 bg-[#1A1715] border border-[#F0E6DA]/[0.08] flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2.5 pb-4 mb-6 border-b border-white/[0.06]">
-                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                  <div className="flex items-center gap-2.5 pb-4 mb-6 border-b border-[#F0E6DA]/[0.06]">
+                    <div className="w-8 h-8 rounded-lg bg-[#C49B66]/15 text-[#D4A373] flex items-center justify-center">
                       <Terminal size={16} />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-sm text-white">Programming Languages</h3>
-                      <p className="text-[11px] font-mono text-slate-400">Core logic & algorithms</p>
+                      <h3 className="font-semibold text-sm text-[#F6F3EE]">Programming Languages</h3>
+                      <p className="text-[11px] font-mono text-[#A09689]">Core logic & algorithms</p>
                     </div>
                   </div>
 
@@ -686,13 +743,13 @@ export default function App() {
                     {skillsData.languages.map((skill) => (
                       <div
                         key={skill.name}
-                        className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition"
+                        className="flex items-center justify-between p-3 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.04] hover:bg-[#1C1917] transition"
                       >
                         <div className="flex items-center gap-3">
                           <span className="text-xl">{skill.icon}</span>
-                          <span className="text-sm font-medium text-slate-200">{skill.name}</span>
+                          <span className="text-sm font-medium text-[#EDE8E1]">{skill.name}</span>
                         </div>
-                        <span className="text-xs font-mono text-slate-400">{skill.level}</span>
+                        <span className="text-xs font-mono text-[#A09689]">{skill.level}</span>
                       </div>
                     ))}
                   </div>
@@ -700,15 +757,15 @@ export default function App() {
               </div>
 
               {/* Category 2: Frontend Ecosystem */}
-              <div className="surface-card rounded-2xl p-6 bg-slate-900/70 border border-white/[0.08] flex flex-col justify-between">
+              <div className="surface-card rounded-2xl p-6 bg-[#1A1715] border border-[#F0E6DA]/[0.08] flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2.5 pb-4 mb-6 border-b border-white/[0.06]">
-                    <div className="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                  <div className="flex items-center gap-2.5 pb-4 mb-6 border-b border-[#F0E6DA]/[0.06]">
+                    <div className="w-8 h-8 rounded-lg bg-[#2E6F52]/15 text-[#388563] flex items-center justify-center">
                       <Code2 size={16} />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-sm text-white">Frontend Ecosystem</h3>
-                      <p className="text-[11px] font-mono text-slate-400">Web UI & interactivity</p>
+                      <h3 className="font-semibold text-sm text-[#F6F3EE]">Frontend Ecosystem</h3>
+                      <p className="text-[11px] font-mono text-[#A09689]">Web UI & interactivity</p>
                     </div>
                   </div>
 
@@ -716,13 +773,13 @@ export default function App() {
                     {skillsData.frontend.map((skill) => (
                       <div
                         key={skill.name}
-                        className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition"
+                        className="flex items-center justify-between p-3 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.04] hover:bg-[#1C1917] transition"
                       >
                         <div className="flex items-center gap-3">
                           <span className="text-xl">{skill.icon}</span>
-                          <span className="text-sm font-medium text-slate-200">{skill.name}</span>
+                          <span className="text-sm font-medium text-[#EDE8E1]">{skill.name}</span>
                         </div>
-                        <span className="text-xs font-mono text-slate-400">{skill.level}</span>
+                        <span className="text-xs font-mono text-[#A09689]">{skill.level}</span>
                       </div>
                     ))}
                   </div>
@@ -730,15 +787,15 @@ export default function App() {
               </div>
 
               {/* Category 3: Workflow & Practices */}
-              <div className="surface-card rounded-2xl p-6 bg-slate-900/70 border border-white/[0.08] flex flex-col justify-between">
+              <div className="surface-card rounded-2xl p-6 bg-[#1A1715] border border-[#F0E6DA]/[0.08] flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2.5 pb-4 mb-6 border-b border-white/[0.06]">
-                    <div className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center">
+                  <div className="flex items-center gap-2.5 pb-4 mb-6 border-b border-[#F0E6DA]/[0.06]">
+                    <div className="w-8 h-8 rounded-lg bg-[#F0E6DA]/10 text-[#DDD4C8] flex items-center justify-center">
                       <Layers size={16} />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-sm text-white">Tooling & Engineering</h3>
-                      <p className="text-[11px] font-mono text-slate-400">Workflow & developer tools</p>
+                      <h3 className="font-semibold text-sm text-[#F6F3EE]">Tools & Practices</h3>
+                      <p className="text-[11px] font-mono text-[#A09689]">Workflow & developer setup</p>
                     </div>
                   </div>
 
@@ -746,13 +803,13 @@ export default function App() {
                     {skillsData.workflow.map((skill) => (
                       <div
                         key={skill.name}
-                        className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition"
+                        className="flex items-center justify-between p-3 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.04] hover:bg-[#1C1917] transition"
                       >
                         <div className="flex items-center gap-3">
                           <span className="text-xl">{skill.icon}</span>
-                          <span className="text-sm font-medium text-slate-200">{skill.name}</span>
+                          <span className="text-sm font-medium text-[#EDE8E1]">{skill.name}</span>
                         </div>
-                        <span className="text-xs font-mono text-slate-400">{skill.level}</span>
+                        <span className="text-xs font-mono text-[#A09689]">{skill.level}</span>
                       </div>
                     ))}
                   </div>
@@ -765,20 +822,20 @@ export default function App() {
         {/* =========================================================================
             CURATED SOUNDTRACK SECTION
             ========================================================================= */}
-        <section id="soundtrack" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-white/[0.06] bg-[#0B0F17]">
+        <section id="soundtrack" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-[#F0E6DA]/[0.08] bg-[#121110]">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-indigo-400 mb-2 block">
-                  // 04. CODING ROTATION & SOUNDTRACK
+                <span className="text-xs font-mono uppercase tracking-widest text-[#C49B66] mb-2 block font-medium">
+                  Soundtrack
                 </span>
-                <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
-                  Tracks on heavy rotation.
+                <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F6F3EE]">
+                  Music I code to
                 </h2>
               </div>
-              <p className="text-sm text-slate-400 max-w-md">
-                Music fuels my focus during long late-night coding sessions. Here is the curated tracklist I keep coming back to.
+              <p className="text-sm text-[#A09689] max-w-md">
+                A few favorite tracks that keep me focused during study and late-night coding sessions.
               </p>
             </div>
 
@@ -786,26 +843,26 @@ export default function App() {
             <div className="grid lg:grid-cols-12 gap-8 items-center">
               {/* Featured / Active Track Display Card */}
               <div className="lg:col-span-5">
-                <div className="surface-card rounded-2xl p-6 sm:p-8 bg-slate-900/80 border border-white/[0.08] relative overflow-hidden">
-                  {/* Subtle record album backdrop */}
-                  <div className="relative aspect-square max-w-[280px] mx-auto rounded-2xl overflow-hidden shadow-2xl mb-6 border border-white/[0.1] group">
+                <div className="surface-card rounded-2xl p-6 sm:p-8 bg-[#1A1715] border border-[#F0E6DA]/[0.08] relative overflow-hidden">
+                  {/* Record album backdrop */}
+                  <div className="relative aspect-square max-w-[280px] mx-auto rounded-2xl overflow-hidden shadow-2xl mb-6 border border-[#F0E6DA]/[0.1] group">
                     <img
                       src={songs[activeSong].image}
                       alt={songs[activeSong].title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/80 via-transparent to-transparent" />
+
                     {/* Floating Equalizer on cover */}
                     <div className="absolute bottom-4 left-4 flex items-end gap-1 h-6">
-                      <span className="w-1 bg-emerald-400 rounded-full bar-1"></span>
-                      <span className="w-1 bg-emerald-400 rounded-full bar-2"></span>
-                      <span className="w-1 bg-emerald-400 rounded-full bar-3"></span>
-                      <span className="w-1 bg-emerald-400 rounded-full bar-4"></span>
+                      <span className="w-1 bg-[#2E6F52] rounded-full bar-1"></span>
+                      <span className="w-1 bg-[#2E6F52] rounded-full bar-2"></span>
+                      <span className="w-1 bg-[#2E6F52] rounded-full bar-3"></span>
+                      <span className="w-1 bg-[#2E6F52] rounded-full bar-4"></span>
                     </div>
 
                     <div className="absolute bottom-4 right-4">
-                      <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-slate-300 border border-white/[0.1]">
+                      <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-[#141210]/90 backdrop-blur-md text-[#DDD4C8] border border-[#F0E6DA]/[0.1]">
                         {songs[activeSong].tag}
                       </span>
                     </div>
@@ -813,10 +870,10 @@ export default function App() {
 
                   {/* Song Metadata */}
                   <div className="text-center space-y-1 mb-6">
-                    <h3 className="font-display text-2xl font-bold text-white">
+                    <h3 className="font-display text-2xl font-bold text-[#F6F3EE]">
                       {songs[activeSong].title}
                     </h3>
-                    <p className="text-slate-400 text-sm">
+                    <p className="text-[#A09689] text-sm">
                       {songs[activeSong].artist}
                     </p>
                   </div>
@@ -826,7 +883,7 @@ export default function App() {
                     href={songs[activeSong].link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white font-medium text-xs sm:text-sm transition-all shadow-md shadow-emerald-600/20"
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#2E6F52] hover:bg-[#388563] text-[#F6F3EE] font-medium text-xs sm:text-sm transition-all shadow-md shadow-[#2E6F52]/20"
                   >
                     <FaSpotify size={18} />
                     Listen on Spotify
@@ -837,10 +894,10 @@ export default function App() {
 
               {/* Playlist Selection Column */}
               <div className="lg:col-span-7">
-                <div className="surface-card rounded-2xl p-4 sm:p-6 bg-slate-900/50 border border-white/[0.08] divide-y divide-white/[0.06]">
-                  <div className="px-3 pb-3 flex items-center justify-between text-xs font-mono text-slate-400">
+                <div className="surface-card rounded-2xl p-4 sm:p-6 bg-[#161412] border border-[#F0E6DA]/[0.08] divide-y divide-[#F0E6DA]/[0.06]">
+                  <div className="px-3 pb-3 flex items-center justify-between text-xs font-mono text-[#A09689]">
                     <span>TRACKLIST // 06 SONGS</span>
-                    <span>SELECT TO PREVIEW</span>
+                    <span>CLICK TO PREVIEW</span>
                   </div>
 
                   <div className="pt-2 space-y-2">
@@ -858,16 +915,15 @@ export default function App() {
                           }}
                           role="button"
                           tabIndex={0}
-                          className={`w-full text-left p-3.5 rounded-xl flex items-center justify-between transition cursor-pointer focus:outline-none focus:ring-1 focus:ring-indigo-500 ${
-                            isActive
-                              ? "bg-indigo-600/15 border border-indigo-500/30 text-white"
-                              : "hover:bg-white/[0.04] text-slate-300"
-                          }`}
+                          className={`w-full text-left p-3.5 rounded-xl flex items-center justify-between transition cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#C49B66] ${isActive
+                            ? "bg-[#221E1B] border border-[#C49B66]/35 text-[#F6F3EE]"
+                            : "hover:bg-[#1A1715] text-[#DDD4C8]"
+                            }`}
                         >
                           <div className="flex items-center gap-4">
-                            <span className="font-mono text-xs w-5 text-slate-400">
+                            <span className="font-mono text-xs w-5 text-[#C49B66]">
                               {isActive ? (
-                                <Disc3 size={16} className="text-indigo-400 animate-spin" />
+                                <Disc3 size={16} className="text-[#C49B66] animate-spin" />
                               ) : (
                                 `0${index + 1}`
                               )}
@@ -875,20 +931,20 @@ export default function App() {
                             <img
                               src={song.image}
                               alt={song.title}
-                              className="w-11 h-11 rounded-lg object-cover border border-white/[0.08]"
+                              className="w-11 h-11 rounded-lg object-cover border border-[#F0E6DA]/[0.08]"
                             />
                             <div>
-                              <div className="text-sm font-semibold text-white">
+                              <div className="text-sm font-semibold text-[#F6F3EE]">
                                 {song.title}
                               </div>
-                              <div className="text-xs text-slate-400">
+                              <div className="text-xs text-[#A09689]">
                                 {song.artist}
                               </div>
                             </div>
                           </div>
 
                           <div className="flex items-center gap-3">
-                            <span className="hidden sm:inline-block text-xs font-mono text-slate-400">
+                            <span className="hidden sm:block absolute top-4 -right-3 text-gray-500">
                               {song.year}
                             </span>
                             <a
@@ -896,7 +952,7 @@ export default function App() {
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="p-2 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition"
+                              className="p-2 rounded-lg text-[#A09689] hover:text-[#2E6F52] hover:bg-[#2E6F52]/10 transition"
                               title="Open on Spotify"
                               aria-label={`Open ${song.title} on Spotify`}
                             >
@@ -916,20 +972,20 @@ export default function App() {
         {/* =========================================================================
             MOMENTS / GALLERY SECTION
             ========================================================================= */}
-        <section id="moments" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-white/[0.06] bg-[#0A0E17]">
+        <section id="moments" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-[#F0E6DA]/[0.08] bg-[#171513]">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-indigo-400 mb-2 block">
-                  // 05. BEHIND THE CODE
+                <span className="text-xs font-mono uppercase tracking-widest text-[#C49B66] mb-2 block font-medium">
+                  Moments
                 </span>
-                <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
-                  Moments & journeys in Uttarakhand.
+                <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F6F3EE]">
+                  Life beyond the screen
                 </h2>
               </div>
-              <p className="text-sm text-slate-400 max-w-md">
-                Snapshots from university life, Himalayan explorations, and personal memories outside the terminal.
+              <p className="text-sm text-[#A09689] max-w-md">
+                Snapshots from college life, travels across Uttarakhand, and time with friends.
               </p>
             </div>
 
@@ -947,20 +1003,20 @@ export default function App() {
                   }}
                   role="button"
                   tabIndex={0}
-                  className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-white/[0.08] cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#1A1715] border border-[#F0E6DA]/[0.08] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#C49B66]"
                 >
                   <img
                     src={item.src}
                     alt={item.caption}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter contrast-[1.02]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <span className="text-xs font-mono text-indigo-300 mb-1">{item.tag}</span>
-                    <span className="text-sm font-semibold text-white leading-tight mb-1">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/95 via-[#121110]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                    <span className="text-xs font-mono text-[#C49B66] mb-1">{item.tag}</span>
+                    <span className="text-sm font-semibold text-[#F6F3EE] leading-tight mb-1">
                       {item.caption}
                     </span>
-                    <span className="text-[11px] font-mono text-slate-300 flex items-center gap-1">
-                      <MapPin size={11} className="text-indigo-400" />
+                    <span className="text-[11px] font-mono text-[#DDD4C8] flex items-center gap-1">
+                      <MapPin size={11} className="text-[#C49B66]" />
                       {item.location}
                     </span>
                   </div>
@@ -973,44 +1029,44 @@ export default function App() {
         {/* =========================================================================
             CONTACT SECTION
             ========================================================================= */}
-        <section id="contact" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-white/[0.06] bg-[#0B0F17]">
+        <section id="contact" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-[#F0E6DA]/[0.08] bg-[#121110]">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="flex flex-col mb-16">
-              <span className="text-xs font-mono uppercase tracking-widest text-indigo-400 mb-2">
-                // 06. COMMUNICATION & INQUIRIES
+              <span className="text-xs font-mono uppercase tracking-widest text-[#C49B66] mb-2 font-medium">
+                Contact
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
-                Let’s build something together.
+              <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F6F3EE]">
+                Let’s get in touch
               </h2>
-              <p className="text-sm text-slate-400 mt-2 max-w-xl">
-                Open for summer 2026 frontend internships, collaborative software projects, or open-source discussions.
+              <p className="text-sm text-[#A09689] mt-2 max-w-xl">
+                I’m open for frontend internships, collaborative projects, or general tech conversations. Feel free to reach out.
               </p>
             </div>
 
             <div className="grid lg:grid-cols-12 gap-12">
               {/* Left Column: Direct Contact Info */}
               <div className="lg:col-span-5 space-y-6">
-                <div className="surface-card rounded-2xl p-6 sm:p-8 bg-slate-900/70 border border-white/[0.08]">
-                  <h3 className="font-display text-xl font-bold text-white mb-2">
-                    Direct Contact Channels
+                <div className="surface-card rounded-2xl p-6 sm:p-8 bg-[#1A1715] border border-[#F0E6DA]/[0.08]">
+                  <h3 className="font-display text-xl font-bold text-[#F6F3EE] mb-2">
+                    Direct Contact
                   </h3>
-                  <p className="text-xs text-slate-400 mb-6">
-                    Feel free to send a message directly or connect across professional networks.
+                  <p className="text-xs text-[#A09689] mb-6">
+                    Feel free to email me directly or connect across professional platforms.
                   </p>
 
                   <div className="space-y-4 text-sm">
                     {/* Email Card with Copy button */}
-                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-between">
+                    <div className="p-3.5 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.06] flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                        <div className="w-9 h-9 rounded-lg bg-[#C49B66]/15 text-[#D4A373] flex items-center justify-center">
                           <Mail size={16} />
                         </div>
                         <div>
-                          <div className="text-[11px] font-mono text-slate-400">Email Address</div>
+                          <div className="text-[11px] font-mono text-[#A09689]">Email Address</div>
                           <a
                             href="mailto:priyanshurwt28@gmail.com"
-                            className="font-medium text-slate-200 hover:text-white transition"
+                            className="font-medium text-[#EDE8E1] hover:text-white transition"
                           >
                             priyanshurwt28@gmail.com
                           </a>
@@ -1018,24 +1074,24 @@ export default function App() {
                       </div>
                       <button
                         onClick={copyEmail}
-                        className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.06] transition"
+                        className="p-2 rounded-lg text-[#A09689] hover:text-[#F6F3EE] hover:bg-white/[0.06] transition"
                         title="Copy Email"
                         aria-label="Copy Email"
                       >
-                        {copied ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
+                        {copied ? <Check size={16} className="text-[#388563]" /> : <Copy size={16} />}
                       </button>
                     </div>
 
                     {/* Phone Card */}
-                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                    <div className="p-3.5 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.06] flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-[#C49B66]/15 text-[#D4A373] flex items-center justify-center">
                         <Phone size={16} />
                       </div>
                       <div>
-                        <div className="text-[11px] font-mono text-slate-400">Phone Number</div>
+                        <div className="text-[11px] font-mono text-[#A09689]">Phone Number</div>
                         <a
                           href="tel:+919634511431"
-                          className="font-medium text-slate-200 hover:text-white transition"
+                          className="font-medium text-[#EDE8E1] hover:text-white transition"
                         >
                           +91 9634511431
                         </a>
@@ -1043,36 +1099,36 @@ export default function App() {
                     </div>
 
                     {/* Location Card */}
-                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                    <div className="p-3.5 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.06] flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-[#C49B66]/15 text-[#D4A373] flex items-center justify-center">
                         <MapPin size={16} />
                       </div>
                       <div>
-                        <div className="text-[11px] font-mono text-slate-400">Location</div>
-                        <div className="font-medium text-slate-200">Uttarakhand, India</div>
+                        <div className="text-[11px] font-mono text-[#A09689]">Location</div>
+                        <div className="font-medium text-[#EDE8E1]">Uttarakhand, India</div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Response Guarantee Pill */}
-                  <div className="mt-6 pt-6 border-t border-white/[0.06] flex items-center gap-2 text-xs font-mono text-slate-400">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                    <span>Typical response time: Within 24 hours</span>
+                  {/* Response note */}
+                  <div className="mt-6 pt-6 border-t border-[#F0E6DA]/[0.06] flex items-center gap-2 text-xs font-mono text-[#A09689]">
+                    <span className="w-2 h-2 rounded-full bg-[#2E6F52]"></span>
+                    <span>Typically replies within 24 hours</span>
                   </div>
                 </div>
 
-                {/* Social Network Links Strip */}
+                {/* Social Network Links */}
                 <div className="grid grid-cols-2 gap-3">
                   <a
                     href="https://linkedin.com/in/priyanshurawat15/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-4 rounded-xl bg-slate-900/60 border border-white/[0.06] hover:border-indigo-500/30 flex items-center gap-3 text-slate-300 hover:text-white transition"
+                    className="p-4 rounded-xl bg-[#1A1715] border border-[#F0E6DA]/[0.06] hover:border-[#C49B66]/30 flex items-center gap-3 text-[#DDD4C8] hover:text-[#F6F3EE] transition"
                   >
-                    <FaLinkedin size={18} className="text-indigo-400" />
+                    <FaLinkedin size={18} className="text-[#C49B66]" />
                     <div className="text-xs">
-                      <div className="font-semibold text-white">LinkedIn</div>
-                      <div className="text-slate-400 font-mono text-[10px]">priyanshurawat15</div>
+                      <div className="font-semibold text-[#F6F3EE]">LinkedIn</div>
+                      <div className="text-[#A09689] font-mono text-[10px]">priyanshurawat15</div>
                     </div>
                   </a>
 
@@ -1080,12 +1136,12 @@ export default function App() {
                     href="https://github.com/priyanshurawat15-dev"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-4 rounded-xl bg-slate-900/60 border border-white/[0.06] hover:border-indigo-500/30 flex items-center gap-3 text-slate-300 hover:text-white transition"
+                    className="p-4 rounded-xl bg-[#1A1715] border border-[#F0E6DA]/[0.06] hover:border-[#C49B66]/30 flex items-center gap-3 text-[#DDD4C8] hover:text-[#F6F3EE] transition"
                   >
-                    <FaGithub size={18} className="text-indigo-400" />
+                    <FaGithub size={18} className="text-[#C49B66]" />
                     <div className="text-xs">
-                      <div className="font-semibold text-white">GitHub</div>
-                      <div className="text-slate-400 font-mono text-[10px]">priyanshurawat15-dev</div>
+                      <div className="font-semibold text-[#F6F3EE]">GitHub</div>
+                      <div className="text-[#A09689] font-mono text-[10px]">priyanshurawat15-dev</div>
                     </div>
                   </a>
                 </div>
@@ -1093,18 +1149,18 @@ export default function App() {
 
               {/* Right Column: Contact Form */}
               <div className="lg:col-span-7">
-                <div className="surface-card rounded-2xl p-6 sm:p-8 bg-slate-900/70 border border-white/[0.08]">
-                  <h3 className="font-display text-xl font-bold text-white mb-2">
-                    Send a Message
+                <div className="surface-card rounded-2xl p-6 sm:p-8 bg-[#1A1715] border border-[#F0E6DA]/[0.08]">
+                  <h3 className="font-display text-xl font-bold text-[#F6F3EE] mb-2">
+                    Send a message
                   </h3>
-                  <p className="text-xs text-slate-400 mb-6">
-                    Fill out the form below and I will respond to your provided email address.
+                  <p className="text-xs text-[#A09689] mb-6">
+                    Fill out the form below and I will reply to your email address.
                   </p>
 
                   <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="name" className="block text-xs font-mono text-slate-300 mb-1.5">
+                        <label htmlFor="name" className="block text-xs font-mono text-[#DDD4C8] mb-1.5">
                           Your Name *
                         </label>
                         <input
@@ -1112,13 +1168,13 @@ export default function App() {
                           name="name"
                           type="text"
                           required
-                          placeholder="e.g. Alex Sharma"
-                          className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-white/[0.08] text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
+                          placeholder="Your name"
+                          className="w-full px-4 py-3 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.08] text-sm text-[#F6F3EE] placeholder-[#8C8276] focus:outline-none focus:border-[#C49B66] focus:ring-1 focus:ring-[#C49B66] transition"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="email" className="block text-xs font-mono text-slate-300 mb-1.5">
+                        <label htmlFor="email" className="block text-xs font-mono text-[#DDD4C8] mb-1.5">
                           Your Email *
                         </label>
                         <input
@@ -1126,14 +1182,14 @@ export default function App() {
                           name="email"
                           type="email"
                           required
-                          placeholder="alex@domain.com"
-                          className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-white/[0.08] text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
+                          placeholder="name@example.com"
+                          className="w-full px-4 py-3 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.08] text-sm text-[#F6F3EE] placeholder-[#8C8276] focus:outline-none focus:border-[#C49B66] focus:ring-1 focus:ring-[#C49B66] transition"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-xs font-mono text-slate-300 mb-1.5">
+                      <label htmlFor="message" className="block text-xs font-mono text-[#DDD4C8] mb-1.5">
                         Your Message *
                       </label>
                       <textarea
@@ -1141,14 +1197,14 @@ export default function App() {
                         name="message"
                         rows={5}
                         required
-                        placeholder="Tell me about your project, team opportunity, or inquiry..."
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-white/[0.08] text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
+                        placeholder="Tell me about your project, team opportunity, or question..."
+                        className="w-full px-4 py-3 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.08] text-sm text-[#F6F3EE] placeholder-[#8C8276] focus:outline-none focus:border-[#C49B66] focus:ring-1 focus:ring-[#C49B66] transition"
                       ></textarea>
                     </div>
 
                     {/* Feedback Messages */}
                     {formStatus === "success" && (
-                      <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2.5">
+                      <div className="p-4 rounded-xl bg-[#2E6F52]/15 border border-[#2E6F52]/40 text-[#388563] text-xs flex items-center gap-2.5">
                         <CheckCircle2 size={16} className="shrink-0" />
                         <span>{statusMessage}</span>
                       </div>
@@ -1164,7 +1220,7 @@ export default function App() {
                     <button
                       type="submit"
                       disabled={formStatus === "loading"}
-                      className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition-all shadow-md shadow-indigo-600/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#2E6F52] hover:bg-[#388563] text-[#F6F3EE] font-medium text-sm transition-all shadow-md shadow-[#2E6F52]/20 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {formStatus === "loading" ? (
                         <>
@@ -1192,7 +1248,7 @@ export default function App() {
       <AnimatePresence>
         {activePhoto && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-md"
             onClick={() => setActivePhoto(null)}
           >
             <Motion.div
@@ -1201,7 +1257,7 @@ export default function App() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-3xl w-full surface-card rounded-2xl overflow-hidden bg-slate-900 border border-white/[0.1] shadow-2xl"
+              className="relative max-w-3xl w-full surface-card rounded-2xl overflow-hidden bg-[#1A1715] border border-[#F0E6DA]/[0.1] shadow-2xl"
             >
               <div className="relative aspect-[4/3] bg-black">
                 <img
@@ -1211,7 +1267,7 @@ export default function App() {
                 />
                 <button
                   onClick={() => setActivePhoto(null)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-slate-900/80 text-white hover:bg-slate-800 border border-white/[0.1] transition"
+                  className="absolute top-4 right-4 p-2 rounded-full bg-[#141210]/80 text-[#DDD4C8] hover:text-[#F6F3EE] hover:bg-[#141210] border border-[#F0E6DA]/[0.1] transition"
                   aria-label="Close modal"
                 >
                   <X size={18} />
@@ -1219,13 +1275,13 @@ export default function App() {
               </div>
               <div className="p-4 sm:p-6 flex items-center justify-between text-xs sm:text-sm">
                 <div>
-                  <h4 className="font-semibold text-white">{activePhoto.caption}</h4>
-                  <p className="text-slate-400 font-mono text-xs flex items-center gap-1 mt-0.5">
-                    <MapPin size={12} className="text-indigo-400" />
+                  <h4 className="font-semibold text-[#F6F3EE]">{activePhoto.caption}</h4>
+                  <p className="text-[#A09689] font-mono text-xs flex items-center gap-1 mt-0.5">
+                    <MapPin size={12} className="text-[#C49B66]" />
                     {activePhoto.location}
                   </p>
                 </div>
-                <span className="px-2.5 py-1 rounded-md bg-white/[0.05] border border-white/[0.08] text-xs font-mono text-slate-300">
+                <span className="px-2.5 py-1 rounded-md bg-[#141210] border border-[#F0E6DA]/[0.08] text-xs font-mono text-[#DDD4C8]">
                   {activePhoto.tag}
                 </span>
               </div>
@@ -1237,30 +1293,30 @@ export default function App() {
       {/* =========================================================================
           FOOTER
           ========================================================================= */}
-      <footer className="py-12 px-6 sm:px-8 lg:px-12 border-t border-white/[0.08] bg-[#070A10] text-slate-400 text-xs">
+      <footer className="py-12 px-6 sm:px-8 lg:px-12 border-t border-[#F0E6DA]/[0.08] bg-[#0E0D0C] text-[#A09689] text-xs">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center font-bold text-xs text-indigo-300">
+            <div className="w-8 h-8 rounded-lg bg-[#1C1917] border border-[#C49B66]/30 flex items-center justify-center font-bold text-xs text-[#D4A373]">
               PR
             </div>
             <div>
-              <span className="font-semibold text-slate-200">Priyanshu Rawat</span>
-              <span className="mx-2 text-slate-600">•</span>
-              <span>Computer Science Undergrad</span>
+              <span className="font-semibold text-[#F6F3EE]">Priyanshu Rawat</span>
+              <span className="mx-2 text-[#8C8276]">•</span>
+              <span className="text-[#DDD4C8]">Computer Science Student</span>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 text-slate-300">
-            <a href="#home" className="hover:text-white transition">Home</a>
-            <a href="#about" className="hover:text-white transition">About</a>
-            <a href="#projects" className="hover:text-white transition">Projects</a>
-            <a href="#skills" className="hover:text-white transition">Skills</a>
-            <a href="#soundtrack" className="hover:text-white transition">Soundtrack</a>
-            <a href="#moments" className="hover:text-white transition">Moments</a>
-            <a href="#contact" className="hover:text-white transition">Contact</a>
+          <div className="flex flex-wrap items-center justify-center gap-6 text-[#DDD4C8]">
+            <a href="#home" className="hover:text-[#F6F3EE] transition">Home</a>
+            <a href="#about" className="hover:text-[#F6F3EE] transition">About</a>
+            <a href="#projects" className="hover:text-[#F6F3EE] transition">Projects</a>
+            <a href="#skills" className="hover:text-[#F6F3EE] transition">Skills</a>
+            <a href="#soundtrack" className="hover:text-[#F6F3EE] transition">Soundtrack</a>
+            <a href="#moments" className="hover:text-[#F6F3EE] transition">Moments</a>
+            <a href="#contact" className="hover:text-[#F6F3EE] transition">Contact</a>
           </div>
 
-          <div className="font-mono text-[11px] text-slate-400">
+          <div className="font-mono text-[11px] text-[#A09689]">
             © {new Date().getFullYear()} Priyanshu Rawat • Uttarakhand, India
           </div>
         </div>

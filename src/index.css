@@ -4,12 +4,19 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  
-  --color-canvas: #0B0F17;
-  --color-surface: #111726;
-  --color-surface-hover: #161F33;
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(99, 102, 241, 0.4);
+
+  --color-canvas: #121110;
+  --color-canvas-alt: #171513;
+  --color-surface: #1C1917;
+  --color-surface-card: #1A1715;
+  --color-surface-hover: #24201C;
+  --color-forest: #2E6F52;
+  --color-forest-hover: #388563;
+  --color-brass: #C49B66;
+  --color-brass-light: #D4A373;
+  --color-cream: #F6F3EE;
+  --color-cream-muted: #DDD4C8;
+  --color-stone: #A09689;
 }
 
 :root {
@@ -22,8 +29,8 @@ html {
 }
 
 body {
-  background-color: #0B0F17;
-  color: #F1F5F9;
+  background-color: #121110;
+  color: #EDE8E1;
   font-family: var(--font-sans);
   overflow-x: hidden;
   margin: 0;
@@ -36,41 +43,41 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B0F17;
+  background: #121110;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: #2A2522;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #3B342F;
 }
 
 /* Engineering grid background pattern */
 .bg-grid {
   background-size: 36px 36px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(240, 230, 218, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(240, 230, 218, 0.03) 1px, transparent 1px);
 }
 
 .bg-dots {
   background-size: 24px 24px;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.07) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(240, 230, 218, 0.05) 1px, transparent 0);
 }
 
 /* Glass panel with hairline borders */
 .surface-card {
-  background-color: #111726;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #1A1715;
+  border: 1px solid rgba(240, 230, 218, 0.08);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .surface-card:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.15);
+  border-color: rgba(196, 155, 102, 0.3);
+  box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(196, 155, 102, 0.1);
 }
 
 /* Display font utility */
@@ -84,11 +91,29 @@ body {
 
 /* Sound wave animation for active Spotify track */
 @keyframes soundwave {
-  0%, 100% { height: 4px; }
-  50% { height: 18px; }
+
+  0%,
+  100% {
+    height: 4px;
+  }
+
+  50% {
+    height: 18px;
+  }
 }
 
-.bar-1 { animation: soundwave 1s ease-in-out infinite 0.1s; }
-.bar-2 { animation: soundwave 0.8s ease-in-out infinite 0.25s; }
-.bar-3 { animation: soundwave 1.2s ease-in-out infinite 0.05s; }
-.bar-4 { animation: soundwave 0.9s ease-in-out infinite 0.35s; }
+.bar-1 {
+  animation: soundwave 1s ease-in-out infinite 0.1s;
+}
+
+.bar-2 {
+  animation: soundwave 0.8s ease-in-out infinite 0.25s;
+}
+
+.bar-3 {
+  animation: soundwave 1.2s ease-in-out infinite 0.05s;
+}
+
+.bar-4 {
+  animation: soundwave 0.9s ease-in-out infinite 0.35s;
+}
