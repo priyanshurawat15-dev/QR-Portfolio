@@ -3,6 +3,7 @@ import { motion as Motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import HowItWorks from "./components/HowItWorks";
 import SoundtrackSection from "./components/SoundtrackSection";
+import MomentsSection from "./components/MomentsSection";
 
 // Local assets
 import photo1 from "./assets/photos/photo1.jpg";
@@ -11,6 +12,7 @@ import photo3 from "./assets/photos/photo3.jpg";
 import photo4 from "./assets/photos/photo4.jpg";
 import photo5 from "./assets/photos/photo5.jpg";
 import photo6 from "./assets/photos/photo6.jpg";
+import photo7 from "./assets/photos/photo7.jpg";
 
 import song1 from "./assets/songs/song1.png";
 import song2 from "./assets/songs/song2.png";
@@ -142,9 +144,8 @@ export default function App() {
     { src: photo4, caption: "With friends and classmates", location: "Dehradun", tag: "Life" },
     { src: photo5, caption: "Campus events and college days", location: "Campus", tag: "College" },
     { src: photo6, caption: "Everyday moments", location: "Uttarakhand", tag: "Personal" },
+    { src: photo7, caption: "Part of Co-dev", location: "College", tag: "Club/Society" },
   ];
-  const [activePhoto, setActivePhoto] = useState(null);
-
   // Copy email handler
   const copyEmail = () => {
     navigator.clipboard.writeText("priyanshurwt28@gmail.com");
@@ -832,61 +833,9 @@ export default function App() {
         />
 
         {/* =========================================================================
-            MOMENTS / GALLERY SECTION
+            MOMENTS / GALLERY SECTION (Horizontal Photo Journal)
             ========================================================================= */}
-        <section id="moments" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-[#F0E6DA]/[0.08] bg-[#171513]">
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-              <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-[#C49B66] mb-2 block font-medium">
-                  Moments
-                </span>
-                <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F6F3EE]">
-                  Life beyond the screen
-                </h2>
-              </div>
-              <p className="text-sm text-[#A09689] max-w-md">
-                Snapshots from college life, travels across Uttarakhand, and time with friends.
-              </p>
-            </div>
-
-            {/* Editorial Photography Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-              {moments.map((item, index) => (
-                <div
-                  key={index}
-                  onClick={() => setActivePhoto(item)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      setActivePhoto(item);
-                    }
-                  }}
-                  role="button"
-                  tabIndex={0}
-                  className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#1A1715] border border-[#F0E6DA]/[0.08] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#C49B66]"
-                >
-                  <img
-                    src={item.src}
-                    alt={item.caption}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter contrast-[1.02]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/95 via-[#121110]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <span className="text-xs font-mono text-[#C49B66] mb-1">{item.tag}</span>
-                    <span className="text-sm font-semibold text-[#F6F3EE] leading-tight mb-1">
-                      {item.caption}
-                    </span>
-                    <span className="text-[11px] font-mono text-[#DDD4C8] flex items-center gap-1">
-                      <MapPin size={11} className="text-[#C49B66]" />
-                      {item.location}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <MomentsSection moments={moments} />
 
         {/* =========================================================================
             CONTACT SECTION
@@ -1103,54 +1052,6 @@ export default function App() {
           </div>
         </section>
       </main>
-
-      {/* =========================================================================
-          LIGHTBOX MODAL FOR MOMENTS
-          ========================================================================= */}
-      <AnimatePresence>
-        {activePhoto && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-md"
-            onClick={() => setActivePhoto(null)}
-          >
-            <Motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-3xl w-full surface-card rounded-2xl overflow-hidden bg-[#1A1715] border border-[#F0E6DA]/[0.1] shadow-2xl"
-            >
-              <div className="relative aspect-[4/3] bg-black">
-                <img
-                  src={activePhoto.src}
-                  alt={activePhoto.caption}
-                  className="w-full h-full object-contain"
-                />
-                <button
-                  onClick={() => setActivePhoto(null)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-[#141210]/80 text-[#DDD4C8] hover:text-[#F6F3EE] hover:bg-[#141210] border border-[#F0E6DA]/[0.1] transition"
-                  aria-label="Close modal"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-              <div className="p-4 sm:p-6 flex items-center justify-between text-xs sm:text-sm">
-                <div>
-                  <h4 className="font-semibold text-[#F6F3EE]">{activePhoto.caption}</h4>
-                  <p className="text-[#A09689] font-mono text-xs flex items-center gap-1 mt-0.5">
-                    <MapPin size={12} className="text-[#C49B66]" />
-                    {activePhoto.location}
-                  </p>
-                </div>
-                <span className="px-2.5 py-1 rounded-md bg-[#141210] border border-[#F0E6DA]/[0.08] text-xs font-mono text-[#DDD4C8]">
-                  {activePhoto.tag}
-                </span>
-              </div>
-            </Motion.div>
-          </div>
-        )}
-      </AnimatePresence>
 
       {/* =========================================================================
           FOOTER
