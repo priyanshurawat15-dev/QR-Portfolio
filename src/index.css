@@ -117,3 +117,343 @@ body {
 .bar-4 {
   animation: soundwave 0.9s ease-in-out infinite 0.35s;
 }
+
+
+/* =========================================================================
+   CODING BUDDY & SOUNDTRACK ANIMATIONS
+   ========================================================================= */
+
+/* Head natural groove / listening to music */
+@keyframes buddyGrooveAnim {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  25% {
+    transform: rotate(1.2deg) translateY(0.8px);
+  }
+  50% {
+    transform: rotate(-0.8deg) translateY(-0.4px);
+  }
+  75% {
+    transform: rotate(1.5deg) translateY(1px);
+  }
+}
+
+.buddy-groove {
+  transform-origin: 185px 185px;
+  animation: buddyGrooveAnim 4.6s ease-in-out infinite;
+}
+
+/* Subtle reaction when song is selected */
+@keyframes buddyReactionAnim {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(2.4deg) translateY(-1.5px) scale(1.02);
+  }
+  55% {
+    transform: rotate(-1.5deg) translateY(0.8px);
+  }
+  80% {
+    transform: rotate(1deg) translateY(-0.5px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0px) scale(1);
+  }
+}
+
+.buddy-reaction {
+  transform-origin: 185px 185px;
+  animation: buddyReactionAnim 1.2s ease-out;
+}
+
+/* Natural occasional eye blinking */
+@keyframes buddyBlinkAnim {
+  0%, 96%, 100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  98% {
+    transform: scaleY(0.1);
+    opacity: 0.9;
+  }
+}
+
+.buddy-eyes {
+  transform-origin: 208px 150px;
+  animation: buddyBlinkAnim 5.5s infinite;
+}
+
+/* Subtle breathing / torso movement */
+@keyframes buddyBreatheAnim {
+  0%, 100% {
+    transform: translateY(0px) scaleY(1);
+  }
+  50% {
+    transform: translateY(-1px) scaleY(1.005);
+  }
+}
+
+.buddy-body {
+  transform-origin: 160px 342px;
+  animation: buddyBreatheAnim 4.2s ease-in-out infinite;
+}
+
+/* Subtle typing finger movement (left hand) */
+@keyframes buddyTypeLeftAnim {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+
+.buddy-left-hand {
+  transform-origin: 195px 330px;
+  animation: buddyTypeLeftAnim 0.72s ease-in-out infinite;
+}
+
+/* Subtle typing finger movement (right hand) */
+@keyframes buddyTypeRightAnim {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.3px);
+  }
+}
+
+.buddy-right-hand {
+  transform-origin: 255px 330px;
+  animation: buddyTypeRightAnim 0.68s ease-in-out infinite 0.18s;
+}
+
+/* Slowly rising coffee steam */
+@keyframes buddySteam1Anim {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.65;
+  }
+  70% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-35px) scaleX(1.3) translateX(4px);
+    opacity: 0;
+  }
+}
+
+@keyframes buddySteam2Anim {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.7;
+  }
+  65% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-40px) scaleX(1.35) translateX(-5px);
+    opacity: 0;
+  }
+}
+
+.buddy-steam-path-1 {
+  transform-origin: 157px 284px;
+  animation: buddySteam1Anim 3.8s ease-in-out infinite;
+}
+
+.buddy-steam-path-2 {
+  transform-origin: 167px 284px;
+  animation: buddySteam2Anim 4.4s ease-in-out infinite 1.2s;
+}
+
+/* Small floating music notes */
+@keyframes buddyNote1Anim {
+  0% {
+    transform: translate(0, 0) scale(0.7) rotate(-4deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  75% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(14px, -36px) scale(1.05) rotate(10deg);
+    opacity: 0;
+  }
+}
+
+@keyframes buddyNote2Anim {
+  0% {
+    transform: translate(0, 0) scale(0.65) rotate(4deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.75;
+  }
+  75% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(-12px, -38px) scale(1.1) rotate(-8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes buddyNote3Anim {
+  0% {
+    transform: translate(0, 0) scale(0.65) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(18px, -32px) scale(1) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+.buddy-note-1 {
+  transform-origin: 226px 95px;
+  animation: buddyNote1Anim 4.8s ease-in-out infinite 0.2s;
+}
+
+.buddy-note-2 {
+  transform-origin: 142px 82px;
+  animation: buddyNote2Anim 5.4s ease-in-out infinite 1.8s;
+}
+
+.buddy-note-3 {
+  transform-origin: 245px 108px;
+  animation: buddyNote3Anim 5.0s ease-in-out infinite 3.2s;
+}
+
+/* Subtle laptop screen glow pulse */
+@keyframes buddyGlowAnim {
+  0%, 100% {
+    opacity: 0.28;
+  }
+  50% {
+    opacity: 0.44;
+  }
+}
+
+.buddy-screen-glow {
+  animation: buddyGlowAnim 4.0s ease-in-out infinite;
+}
+
+/* Equalizer frequency bars animation */
+@keyframes eqPulse {
+  0%, 100% {
+    height: 4px;
+  }
+  50% {
+    height: 22px;
+  }
+}
+
+.eq-bar {
+  animation: eqPulse 1.2s ease-in-out infinite;
+}
+
+/* Prefers-reduced-motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .buddy-groove,
+  .buddy-reaction,
+  .buddy-eyes,
+  .buddy-body,
+  .buddy-left-hand,
+  .buddy-right-hand,
+  .buddy-steam-path-1,
+  .buddy-steam-path-2,
+  .buddy-note-1,
+  .buddy-note-2,
+  .buddy-note-3,
+  .buddy-screen-glow,
+  .eq-bar,
+  .bar-1,
+  .bar-2,
+  .bar-3,
+  .bar-4 {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
+/* Additional Interactive Coding Buddy Keyframes */
+@keyframes buddyWobbleTilt {
+  0% { transform: rotate(0deg) translateY(0); }
+  20% { transform: rotate(-18deg) translateY(-8px) translateX(-6px); }
+  45% { transform: rotate(14deg) translateY(-5px) translateX(5px); }
+  70% { transform: rotate(-8deg) translateY(-2px) translateX(-3px); }
+  85% { transform: rotate(4deg) translateY(-1px) translateX(2px); }
+  100% { transform: rotate(0deg) translateY(0) translateX(0); }
+}
+
+.buddy-wobble-active {
+  transform-origin: 185px 340px;
+  animation: buddyWobbleTilt 1.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes buddyFastTypeAnim {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3.2px); }
+}
+
+.buddy-fast-type-left {
+  transform-origin: 195px 330px;
+  animation: buddyFastTypeAnim 0.18s ease-in-out infinite;
+}
+
+.buddy-fast-type-right {
+  transform-origin: 255px 330px;
+  animation: buddyFastTypeAnim 0.18s ease-in-out infinite 0.09s;
+}
+
+@keyframes buddyBubbleInAnim {
+  0% { transform: scale(0.7) translateY(8px); opacity: 0; }
+  70% { transform: scale(1.04) translateY(-2px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.buddy-speech-bubble {
+  transform-origin: bottom center;
+  animation: buddyBubbleInAnim 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes buddyZzzAnim {
+  0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  35% { opacity: 0.9; }
+  80% { opacity: 0.4; }
+  100% { transform: translate(16px, -32px) scale(1.15); opacity: 0; }
+}
+
+.buddy-zzz-1 {
+  transform-origin: 215px 95px;
+  animation: buddyZzzAnim 3.2s ease-in-out infinite;
+}
+
+.buddy-zzz-2 {
+  transform-origin: 228px 82px;
+  animation: buddyZzzAnim 3.2s ease-in-out infinite 1.1s;
+}
+
+.buddy-zzz-3 {
+  transform-origin: 242px 70px;
+  animation: buddyZzzAnim 3.2s ease-in-out infinite 2.2s;
+}

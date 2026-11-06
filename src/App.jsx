@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import HowItWorks from "./components/HowItWorks";
+import SoundtrackSection from "./components/SoundtrackSection";
 
 // Local assets
 import photo1 from "./assets/photos/photo1.jpg";
@@ -40,7 +41,17 @@ import {
   FaJava,
   FaSpotify,
 } from "react-icons/fa";
-import { SiC, SiCplusplus, SiPython, SiTailwindcss, SiVite } from "react-icons/si";
+import {
+  SiC,
+  SiCplusplus,
+  SiPython,
+  SiTailwindcss,
+  SiVite,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiCanva
+} from "react-icons/si";
 import {
   ArrowUpRight,
   ExternalLink,
@@ -170,26 +181,35 @@ export default function App() {
 
   const skillsData = {
     languages: [
-      { name: "C", icon: <SiC className="text-sky-400" />, level: "Foundations & memory" },
-      { name: "C++", icon: <SiCplusplus className="text-blue-400" />, level: "Data structures & algorithms" },
-      { name: "Java", icon: <FaJava className="text-amber-500" />, level: "Object-oriented programming" },
-      { name: "Python", icon: <SiPython className="text-yellow-400" />, level: "Scripting & logic" },
-      { name: "JavaScript", icon: <FaJsSquare className="text-yellow-400" />, level: "Modern ES6+ & web logic" },
+      { name: "C", icon: <SiC className="text-[#659AD2]" /> },
+      { name: "C++", icon: <SiCplusplus className="text-[#00599C]" /> },
+      { name: "Java", icon: <FaJava className="text-[#E76F00]" /> },
+      { name: "Python", icon: <SiPython className="text-[#3776AB]" /> },
+      { name: "JavaScript", icon: <FaJsSquare className="text-[#F7DF1E]" /> },
     ],
-    frontend: [
-      { name: "React.js", icon: <FaReact className="text-cyan-400" />, level: "Components, hooks & state" },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" />, level: "Responsive utility styling" },
-      { name: "HTML5", icon: <FaHtml5 className="text-orange-500" />, level: "Semantic markup & accessibility" },
-      { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" />, level: "Flexbox, Grid & animations" },
-    ],
-    workflow: [
-      { name: "Git & GitHub", icon: <FaGitAlt className="text-orange-500" />, level: "Version control & collaboration" },
-      { name: "Vite", icon: <SiVite className="text-purple-400" />, level: "Fast development & build tooling" },
-      { name: "UI & Layout", icon: <Layers className="text-[#D4A373]" size={18} />, level: "Hierarchy, spacing & usability" },
-      { name: "Responsive Design", icon: <Code2 className="text-[#388563]" size={18} />, level: "Cross-device layouts" },
-    ],
-  };
 
+    frontend: [
+      { name: "React.js", icon: <FaReact className="text-[#61DAFB]" /> },
+      { name: "HTML5", icon: <FaHtml5 className="text-[#E34F26]" /> },
+      { name: "CSS3", icon: <FaCss3Alt className="text-[#1572B6]" /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38BDF8]" /> },
+    ],
+
+    backend: [
+      { name: "Node.js", icon: <SiNodedotjs className="text-[#5FA04E]" />, status: "Learning" },
+      { name: "Express.js", icon: <SiExpress className="text-[#EDE8E1]" />, status: "Learning" },
+      { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" />, status: "Learning" },
+    ],
+
+    tools: [
+      { name: "Git", icon: <FaGitAlt className="text-[#F05032]" /> },
+      { name: "GitHub", icon: <FaGithub className="text-[#EDE8E1]" /> },
+      { name: "Vite", icon: <SiVite className="text-[#A78BFA]" /> },
+      { name: "VS Code", icon: <Code2 className="text-[#007ACC]" /> },
+      { name: "Canva", icon: <SiCanva className="text-[#00C4CC]" /> },
+    ],
+
+  };
   const projects = [
     {
       id: "01",
@@ -725,249 +745,91 @@ export default function App() {
             </div>
 
             {/* Structured Engineering Pillars */}
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Category 1: Languages */}
-              <div className="surface-card rounded-2xl p-6 bg-[#1A1715] border border-[#F0E6DA]/[0.08] flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2.5 pb-4 mb-6 border-b border-[#F0E6DA]/[0.06]">
-                    <div className="w-8 h-8 rounded-lg bg-[#C49B66]/15 text-[#D4A373] flex items-center justify-center">
-                      <Terminal size={16} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-sm text-[#F6F3EE]">Programming Languages</h3>
-                      <p className="text-[11px] font-mono text-[#A09689]">Core logic & algorithms</p>
-                    </div>
+            {/* Stacked Technology Sections */}
+            <div className="border-t border-[#F0E6DA]/[0.08]">
+
+              {[
+                {
+                  title: "Programming Languages",
+                  subtitle: "Languages I use for programming and problem solving",
+                  skills: skillsData.languages,
+                },
+                {
+                  title: "Frontend Development",
+                  subtitle: "Building websites and user interfaces",
+                  skills: skillsData.frontend,
+                },
+                {
+                  title: "Backend & Database",
+                  subtitle: "Exploring server-side development and databases",
+                  skills: skillsData.backend,
+                },
+                {
+                  title: "Tools & Others",
+                  subtitle: "Tools I use while building and managing projects",
+                  skills: skillsData.tools,
+                },
+              ].map((group, index) => (
+                <div
+                  key={group.title}
+                  className="grid md:grid-cols-12 gap-4 md:gap-8 py-7 border-b border-[#F0E6DA]/[0.08]"
+                >
+
+                  {/* Category Name */}
+                  <div className="md:col-span-4">
+                    <span className="text-xs font-mono text-[#C49B66]">
+                      0{index + 1}
+                    </span>
+
+                    <h3 className="text-base font-semibold text-[#F6F3EE] mt-1">
+                      {group.title}
+                    </h3>
+
+                    <p className="text-xs text-[#A09689] mt-1">
+                      {group.subtitle}
+                    </p>
                   </div>
 
-                  <div className="space-y-3">
-                    {skillsData.languages.map((skill) => (
+                  {/* Technologies */}
+                  <div className="md:col-span-8 flex flex-wrap gap-2.5">
+
+                    {group.skills.map((skill) => (
                       <div
                         key={skill.name}
-                        className="flex items-center justify-between p-3 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.04] hover:bg-[#1C1917] transition"
+                        className="group inline-flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border border-[#F0E6DA]/[0.08] bg-[#1A1715] hover:border-[#C49B66]/40 hover:bg-[#201C19] transition-colors duration-200"
                       >
-                        <div className="flex items-center gap-3">
-                          <span className="text-xl">{skill.icon}</span>
-                          <span className="text-sm font-medium text-[#EDE8E1]">{skill.name}</span>
-                        </div>
-                        <span className="text-xs font-mono text-[#A09689]">{skill.level}</span>
+                        <span className="text-lg text-[#DDD4C8] group-hover:text-[#D4A373] transition-colors">
+                          {skill.icon}
+                        </span>
+
+                        <span className="text-sm text-[#EDE8E1] whitespace-nowrap">
+                          {skill.name}
+                        </span>
+
+                        {skill.status && (
+                          <span className="text-[10px] font-mono text-[#C49B66] border border-[#C49B66]/25 rounded px-1.5 py-0.5">
+                            {skill.status}
+                          </span>
+                        )}
                       </div>
                     ))}
+
                   </div>
                 </div>
-              </div>
+              ))}
 
-              {/* Category 2: Frontend Ecosystem */}
-              <div className="surface-card rounded-2xl p-6 bg-[#1A1715] border border-[#F0E6DA]/[0.08] flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2.5 pb-4 mb-6 border-b border-[#F0E6DA]/[0.06]">
-                    <div className="w-8 h-8 rounded-lg bg-[#2E6F52]/15 text-[#388563] flex items-center justify-center">
-                      <Code2 size={16} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-sm text-[#F6F3EE]">Frontend Ecosystem</h3>
-                      <p className="text-[11px] font-mono text-[#A09689]">Web UI & interactivity</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    {skillsData.frontend.map((skill) => (
-                      <div
-                        key={skill.name}
-                        className="flex items-center justify-between p-3 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.04] hover:bg-[#1C1917] transition"
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-xl">{skill.icon}</span>
-                          <span className="text-sm font-medium text-[#EDE8E1]">{skill.name}</span>
-                        </div>
-                        <span className="text-xs font-mono text-[#A09689]">{skill.level}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Category 3: Workflow & Practices */}
-              <div className="surface-card rounded-2xl p-6 bg-[#1A1715] border border-[#F0E6DA]/[0.08] flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2.5 pb-4 mb-6 border-b border-[#F0E6DA]/[0.06]">
-                    <div className="w-8 h-8 rounded-lg bg-[#F0E6DA]/10 text-[#DDD4C8] flex items-center justify-center">
-                      <Layers size={16} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-sm text-[#F6F3EE]">Tools & Practices</h3>
-                      <p className="text-[11px] font-mono text-[#A09689]">Workflow & developer setup</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    {skillsData.workflow.map((skill) => (
-                      <div
-                        key={skill.name}
-                        className="flex items-center justify-between p-3 rounded-xl bg-[#141210] border border-[#F0E6DA]/[0.04] hover:bg-[#1C1917] transition"
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-xl">{skill.icon}</span>
-                          <span className="text-sm font-medium text-[#EDE8E1]">{skill.name}</span>
-                        </div>
-                        <span className="text-xs font-mono text-[#A09689]">{skill.level}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
 
         {/* =========================================================================
-            CURATED SOUNDTRACK SECTION
+            CURATED SOUNDTRACK SECTION (Redesigned Coding Buddy Concept)
             ========================================================================= */}
-        <section id="soundtrack" className="py-24 px-6 sm:px-8 lg:px-12 border-t border-[#F0E6DA]/[0.08] bg-[#121110]">
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-              <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-[#C49B66] mb-2 block font-medium">
-                  Soundtrack
-                </span>
-                <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F6F3EE]">
-                  Music I code to
-                </h2>
-              </div>
-              <p className="text-sm text-[#A09689] max-w-md">
-                A few favorite tracks that keep me focused during study and late-night coding sessions.
-              </p>
-            </div>
-
-            {/* Interactive Player Layout */}
-            <div className="grid lg:grid-cols-12 gap-8 items-center">
-              {/* Featured / Active Track Display Card */}
-              <div className="lg:col-span-5">
-                <div className="surface-card rounded-2xl p-6 sm:p-8 bg-[#1A1715] border border-[#F0E6DA]/[0.08] relative overflow-hidden">
-                  {/* Record album backdrop */}
-                  <div className="relative aspect-square max-w-[280px] mx-auto rounded-2xl overflow-hidden shadow-2xl mb-6 border border-[#F0E6DA]/[0.1] group">
-                    <img
-                      src={songs[activeSong].image}
-                      alt={songs[activeSong].title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121110]/80 via-transparent to-transparent" />
-
-                    {/* Floating Equalizer on cover */}
-                    <div className="absolute bottom-4 left-4 flex items-end gap-1 h-6">
-                      <span className="w-1 bg-[#2E6F52] rounded-full bar-1"></span>
-                      <span className="w-1 bg-[#2E6F52] rounded-full bar-2"></span>
-                      <span className="w-1 bg-[#2E6F52] rounded-full bar-3"></span>
-                      <span className="w-1 bg-[#2E6F52] rounded-full bar-4"></span>
-                    </div>
-
-                    <div className="absolute bottom-4 right-4">
-                      <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-[#141210]/90 backdrop-blur-md text-[#DDD4C8] border border-[#F0E6DA]/[0.1]">
-                        {songs[activeSong].tag}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Song Metadata */}
-                  <div className="text-center space-y-1 mb-6">
-                    <h3 className="font-display text-2xl font-bold text-[#F6F3EE]">
-                      {songs[activeSong].title}
-                    </h3>
-                    <p className="text-[#A09689] text-sm">
-                      {songs[activeSong].artist}
-                    </p>
-                  </div>
-
-                  {/* Open Spotify Action */}
-                  <a
-                    href={songs[activeSong].link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#2E6F52] hover:bg-[#388563] text-[#F6F3EE] font-medium text-xs sm:text-sm transition-all shadow-md shadow-[#2E6F52]/20"
-                  >
-                    <FaSpotify size={18} />
-                    Listen on Spotify
-                    <ArrowUpRight size={14} />
-                  </a>
-                </div>
-              </div>
-
-              {/* Playlist Selection Column */}
-              <div className="lg:col-span-7">
-                <div className="surface-card rounded-2xl p-4 sm:p-6 bg-[#161412] border border-[#F0E6DA]/[0.08] divide-y divide-[#F0E6DA]/[0.06]">
-                  <div className="px-3 pb-3 flex items-center justify-between text-xs font-mono text-[#A09689]">
-                    <span>TRACKLIST // 06 SONGS</span>
-                    <span>CLICK TO PREVIEW</span>
-                  </div>
-
-                  <div className="pt-2 space-y-2">
-                    {songs.map((song, index) => {
-                      const isActive = index === activeSong;
-                      return (
-                        <div
-                          key={song.title}
-                          onClick={() => setActiveSong(index)}
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter" || e.key === " ") {
-                              e.preventDefault();
-                              setActiveSong(index);
-                            }
-                          }}
-                          role="button"
-                          tabIndex={0}
-                          className={`w-full text-left p-3.5 rounded-xl flex items-center justify-between transition cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#C49B66] ${isActive
-                            ? "bg-[#221E1B] border border-[#C49B66]/35 text-[#F6F3EE]"
-                            : "hover:bg-[#1A1715] text-[#DDD4C8]"
-                            }`}
-                        >
-                          <div className="flex items-center gap-4">
-                            <span className="font-mono text-xs w-5 text-[#C49B66]">
-                              {isActive ? (
-                                <Disc3 size={16} className="text-[#C49B66] animate-spin" />
-                              ) : (
-                                `0${index + 1}`
-                              )}
-                            </span>
-                            <img
-                              src={song.image}
-                              alt={song.title}
-                              className="w-11 h-11 rounded-lg object-cover border border-[#F0E6DA]/[0.08]"
-                            />
-                            <div>
-                              <div className="text-sm font-semibold text-[#F6F3EE]">
-                                {song.title}
-                              </div>
-                              <div className="text-xs text-[#A09689]">
-                                {song.artist}
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="flex items-center gap-3">
-                            <span className="hidden sm:block absolute top-4 -right-3 text-gray-500">
-                              {song.year}
-                            </span>
-                            <a
-                              href={song.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="p-2 rounded-lg text-[#A09689] hover:text-[#2E6F52] hover:bg-[#2E6F52]/10 transition"
-                              title="Open on Spotify"
-                              aria-label={`Open ${song.title} on Spotify`}
-                            >
-                              <FaSpotify size={16} />
-                            </a>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SoundtrackSection
+          songs={songs}
+          activeSong={activeSong}
+          setActiveSong={setActiveSong}
+        />
 
         {/* =========================================================================
             MOMENTS / GALLERY SECTION
